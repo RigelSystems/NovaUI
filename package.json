@@ -21,7 +21,8 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "init-msw": "msw init public/"
+    "init-msw": "msw init public/",
+    "chromatic": "npx chromatic --project-token=chpt_322c142ec2c1ce6"
   },
   "dependencies": {
     "vue": "^3.4.21"
@@ -37,6 +38,7 @@
     "@storybook/vue3-vite": "^8.3.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
+    "chromatic": "^11.25.2",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vue": "^9.23.0",

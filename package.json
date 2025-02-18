@@ -1,12 +1,12 @@
 {
-  "name": "intro-storybook-vue-template",
+  "name": "@rigelsystems/novaui",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Vue Library",
-  "publishConfig": {
-    "@rigelsystems:novaui": "https://npm.pkg.github.com"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/chromaui/intro-storybook-vue-template"

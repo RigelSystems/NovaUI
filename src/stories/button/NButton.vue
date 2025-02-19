@@ -1,13 +1,9 @@
-<template>
-  <button type="button" :class="classes" @click="onClick" :style="style">{{ label }}</button>
-</template>
-
 <script>
-import './button.css';
-import { reactive, computed } from 'vue';
+import './n-button.css';
+import { reactive, computed, inject } from 'vue';
 
 export default {
-  name: 'my-button',
+  name: 'n-button',
 
   props: {
     label: {
@@ -33,6 +29,8 @@ export default {
 
   setup(props, { emit }) {
     props = reactive(props);
+    const novaConfig = inject('NovaUIConfig', { theme: 'blue' });
+    
     return {
       classes: computed(() => ({
         'storybook-button': true,
@@ -46,7 +44,13 @@ export default {
       onClick() {
         emit('click');
       },
+      novaConfig,
     };
   },
 };
 </script>
+
+<template>
+  {{ novaConfig }}
+  <button type="button" :class="classes" @click="onClick" :style="{ color: novaConfig.theme }">{{ label }}</button>
+</template>

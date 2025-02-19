@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import './n-button.css';
-import { NovaUIConfigSymbol } from '../../../index.ts';
+import { NovaUIConfigSymbol } from '../../../index';
 import { computed, inject } from 'vue';
 
 // Define Props Interface

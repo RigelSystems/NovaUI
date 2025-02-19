@@ -11,7 +11,7 @@ npm install @rigelsystems/novaui
 ```js
 import NovaUI from '@rigelsystems/novaui'
 
-app.use(NovaUI)
+app.use(NovaUI, { theme: '#000', borderRadius: '5px' });
 ```
 
 ### Development

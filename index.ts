@@ -1,4 +1,4 @@
-import { App, Plugin } from 'vue';
+import { type App, type Plugin } from 'vue';
 import NButton from './src/stories/button/NButton.vue';
 
 export interface NovaUIOptions {

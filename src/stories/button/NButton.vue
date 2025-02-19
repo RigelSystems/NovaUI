@@ -1,56 +1,44 @@
-<script>
+<script setup lang="ts">
 import './n-button.css';
-import { reactive, computed, inject } from 'vue';
+import { NovaUIConfigSymbol } from '../../../index.ts';
+import { computed, inject } from 'vue';
 
-export default {
-  name: 'n-button',
+// Define Props Interface
+interface ButtonProps {
+  label: string;
+  primary?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  backgroundColor?: string;
+}
 
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String,
-      validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1;
-      },
-    },
-    backgroundColor: {
-      type: String,
-    },
-  },
+// Inject NovaUI Configuration
+const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
 
-  emits: ['click'],
+// Define Props and Emits
+const props = defineProps<ButtonProps>();
+const emit = defineEmits<{
+  (event: 'click'): void;
+}>();
 
-  setup(props, { emit }) {
-    props = reactive(props);
-    const novaConfig = inject('NovaUIConfig', { theme: 'blue' });
-    
-    return {
-      classes: computed(() => ({
-        'storybook-button': true,
-        'storybook-button--primary': props.primary,
-        'storybook-button--secondary': !props.primary,
-        [`storybook-button--${props.size || 'medium'}`]: true,
-      })),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
-      })),
-      onClick() {
-        emit('click');
-      },
-      novaConfig,
-    };
-  },
+// Computed Styles and Classes
+const classes = computed(() => ({
+  'storybook-button': true,
+  'storybook-button--primary': props.primary,
+  'storybook-button--secondary': !props.primary,
+  [`storybook-button--${props.size || 'medium'}`]: true,
+}));
+
+const style = computed(() => ({
+  backgroundColor: props.backgroundColor,
+}));
+
+const onClick = () => {
+  emit('click');
 };
 </script>
 
 <template>
-  {{ novaConfig }}
-  <button type="button" :class="classes" @click="onClick" :style="{ color: novaConfig.theme }">{{ label }}</button>
+  <button type="button" :class="classes" @click="onClick" :style="{ backgroundColor: novaConfig.theme, borderRadius: novaConfig.borderRadius }">
+    {{ label }}
+  </button>
 </template>

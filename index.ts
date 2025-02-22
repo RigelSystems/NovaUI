@@ -1,5 +1,6 @@
 import { type App, type Plugin } from 'vue';
 import NButton from './src/stories/button/NButton.vue';
+import NOrderList from './src/stories/lists/order-list/NOrderList.vue';
 
 export interface NovaUIOptions {
   theme?: string;
@@ -25,6 +26,7 @@ const NovaUI: Plugin = {
 
     // Register components globally
     app.component('NButton', NButton);
+    app.component('NOrderList', NOrderList);
   }
 };
 

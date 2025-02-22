@@ -100,7 +100,7 @@ export default defineComponent({
       }));
 
       try {
-        const headers = {
+        const headers: Record<string, string> = {
           'Content-Type': 'application/json',
         }
         if (props.accessToken) {

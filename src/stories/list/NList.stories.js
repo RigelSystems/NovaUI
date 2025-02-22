@@ -7,11 +7,11 @@ export default {
   tags: ['autodocs'],
     args: {
         initialItems: [
-            { id: 1, name: 'Item 1' },
-            { id: 2, name: 'Item 2' },
-            { id: 3, name: 'Item 3' },
-            { id: 4, name: 'Item 4' },
-            { id: 5, name: 'Item 5' },
+            { id: 1, body: "<p>Item 1</p>" },
+            { id: 2, body: "<p>Item 2</p>" },
+            { id: 3, body: "<p>Item 3</p>" },
+            { id: 4, body: "<p>Item 4</p>" },
+            { id: 5, body: "<p>Item 5</p>" },
         ],
         updateUrl: 'http://localhost:3000/update',
     }
@@ -19,11 +19,11 @@ export default {
 
 export const List = {
     initialItems: [
-        { id: 1, name: 'Item 1' },
-        { id: 2, name: 'Item 2' },
-        { id: 3, name: 'Item 3' },
-        { id: 4, name: 'Item 4' },
-        { id: 5, name: 'Item 5' },
+        { id: 1, body: "<p>Item 1</p>" },
+        { id: 2, body: "<p>Item 2</p>" },
+        { id: 3, body: "<p>Item 3</p>" },
+        { id: 4, body: "<p>Item 4</p>" },
+        { id: 5, body: "<p>Item 5</p>" },
     ],
     updateUrl: 'http://localhost:3000/update',
 }

@@ -16,5 +16,14 @@ app.use(NovaUI, { theme: '#000', borderRadius: '5px' });
 
 ### Development
 
-yarn storybook
+Run storybook with:
 
+```shell
+yarn storybook
+```
+
+Run test suite with:
+
+```shell
+npx vitest
+```

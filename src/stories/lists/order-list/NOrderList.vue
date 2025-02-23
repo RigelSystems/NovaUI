@@ -5,18 +5,15 @@
     </div>
     <ul role="list" :class="{ disabled: loading }">
       <li
-        v-for="(item, index) in sortedItems"
+        v-for="item in sortedItems"
         :key="item.id"
-        class="list-item"
+        :class="`list-item ` + (item.id == draggedId ? 'dragging' : '')"
         role="listitem"
         draggable="true"
         :aria-disabled="loading"
-        @dragstart="loading ? null : onDragStart(index)"
-        @dragover.prevent
-        @drop="loading ? null : onDrop(index)"
-        @touchstart="loading ? null : onDragStart(index)"
-        @touchmove.prevent
-        @touchend="loading ? null : onDrop(index)"
+        @dragstart="loading ? null : onDragStart($event, item.id)"
+        @dragover="reorder($event, item.id)"
+        @drop="loading ? null : onDrop(item.id)"
       >
         <slot v-bind="item" />
       </li>
@@ -25,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue';
+import { defineComponent, ref, computed, watch, nextTick } from 'vue';
 
 interface OrderItem {
   id: number;
@@ -41,7 +38,7 @@ export default defineComponent({
     },
     orderKey: {
       type: String,
-      default: 'position', // Default key (can be overridden)
+      default: 'position',
     },
     updateUrl: {
       type: String,
@@ -62,7 +59,7 @@ export default defineComponent({
   },
   setup(props) {
     const items = ref([...props.items]);
-    let draggedIndex = -1;
+    let draggedId = ref<number | null>(null);
 
     // Keep sortedItems reactive
     const sortedItems = computed(() =>
@@ -78,22 +75,51 @@ export default defineComponent({
       { deep: true, immediate: true }
     );
 
-    const onDragStart = (index: number) => {
-      draggedIndex = index;
+    const onDragStart = (event: DragEvent, id: number) => {
+      draggedId.value = id;
+
+      // Create an empty drag image
+      const emptyImage = document.createElement("div");
+      emptyImage.style.width = "1px";
+      emptyImage.style.height = "1px";
+      emptyImage.style.opacity = "0";
+      document.body.appendChild(emptyImage);
+
+      // Set it as the drag image
+      event.dataTransfer?.setDragImage(emptyImage, 0, 0);
+
+      // Cleanup: Remove the element after drag starts
+      setTimeout(() => document.body.removeChild(emptyImage), 0);
     };
 
-    const onDrop = async (targetIndex: number) => {
-      if (props.loading || draggedIndex === targetIndex) return;
+    const reorder = (event: DragEvent, id: number) => {
+      event.preventDefault();
+      if (props.loading || draggedId.value === null) return;
 
-      const movedItem = items.value.splice(draggedIndex, 1)[0];
-      items.value.splice(targetIndex, 0, movedItem);
+      const draggedIndex = items.value.findIndex((item) => item.id === draggedId.value);
+      const targetIndex = items.value.findIndex((item) => item.id === id);
+
+      if (draggedIndex === -1 || targetIndex === -1 || draggedIndex === targetIndex) return;
+
+      // Remove the dragged item
+      const [draggedItem] = items.value.splice(draggedIndex, 1);
+
+      // Insert at the new position
+      items.value.splice(targetIndex, 0, draggedItem);
 
       // Update order dynamically based on orderKey
       items.value.forEach((item, index) => {
         item[props.orderKey] = index + 1;
       });
+    };
 
-      // Ensure the request body contains only `id` and the correct orderKey
+    const onDrop = async (targetId: number) => {
+      console.log('dropped')
+      // if (props.loading || draggedId.value === targetId) return;
+
+    
+
+      // Prepare payload with `id` and updated `orderKey`
       const reorderedItems = items.value.map((item) => ({
         id: item.id,
         [props.orderKey]: item[props.orderKey],
@@ -102,34 +128,33 @@ export default defineComponent({
       try {
         const headers: Record<string, string> = {
           'Content-Type': 'application/json',
-        }
+        };
         if (props.accessToken) {
           headers['Authorization'] = `Bearer ${props.accessToken}`;
         }
         await fetch(props.updateUrl, {
           method: 'POST',
-          headers: headers,
+          headers,
           body: JSON.stringify({ [props.modelName]: reorderedItems }),
         });
       } catch (error) {
         console.error('Failed to update order:', error);
+      } finally {
+        draggedId.value = null;
       }
     };
 
-    return { sortedItems, onDragStart, onDrop };
+    return { sortedItems, onDragStart, onDrop, reorder, draggedId };
   },
 });
 </script>
 
+
+
 <style scoped>
 .list-container {
-  width: 300px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
   position: relative;
 }
 
@@ -140,15 +165,9 @@ ul {
 
 .list-item {
   padding: 10px;
-  background: #f9f9f9;
-  border: 1px solid #ccc;
-  cursor: grab;
+  cursor: move;
   user-select: none;
-  transition: opacity 0.3s;
-}
-
-.list-item:active {
-  opacity: 0.6;
+  transition: 0s;
 }
 
 /* Loading State */
@@ -163,10 +182,10 @@ ul {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
 }
+
 </style>

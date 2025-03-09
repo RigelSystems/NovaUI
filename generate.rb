@@ -46,33 +46,26 @@ STORIES_TEMPLATE =
       component: #{name},
       tags: ['autodocs'],
       argTypes: {
-        size: { control: { type: 'select' }, options: ['small', 'medium', 'large'] },
-        backgroundColor: { control: 'color' }
+        label: { control: { type: 'text' } },
       },
-      // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-      args: { onClick: fn() }
+      args: {
+        label: 'Button',
+      },
+      parameters: {
+        docs: {
+          description: {
+            component: "A description of the component."
+          }
+        }
+      }
     }
 
     // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-    export const Primary = {
-      args: {
-        primary: true,
-        label: 'Button'
-      }
-    }
-
-    export const Secondary = {
-      args: {
-        label: 'Button'
-      }
-    }
+    export const Default = {};
 VUE
 
 VUE_TEMPLATE =
   <<~VUE
-  <template>
-  </template>
-
   <script lang="ts">
     import { defineComponent, computed, inject } from 'vue';
     import "./#{name}.css";
@@ -86,21 +79,18 @@ VUE_TEMPLATE =
           required: true,
         },
       },
-      emits: ['click'],
-      setup(props, { emit }) {
+      setup(props) {
         const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
-
-        const onClick = () => {
-          emit('click');
-        };
 
         return {
           novaConfig,
-          onClick,
         };
       },
     });
   </script>
+
+  <template>
+  </template>
 VUE
 
 # Determine the directory

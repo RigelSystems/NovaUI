@@ -133,11 +133,38 @@ if File.exist?(vue_path)
   exit 1
 end
 
+# Function to update the NovaUI.ts plugin file
+PLUGIN_FILE = './index.ts'
+def update_plugin(name)
+  return unless File.exist?(PLUGIN_FILE)
+
+  import_statement = "import #{name} from './src/stories/#{name}/#{name}.vue';"
+  component_registration = "app.component('#{name}', #{name});"
+
+  content = File.read(PLUGIN_FILE)
+
+  # Check if the import already exists
+  if content.include?(import_statement)
+    puts "⚠️  #{name} is already in NovaUI.ts!"
+    return
+  end
+
+  # Insert the import statement before the `export interface` line
+  content.sub!(/(export interface NovaUIOptions)/, "#{import_statement}\n\n\\1")
+
+  # Insert the component registration before the closing `}`
+  content.sub!(/(\/\/ Register components globally\n\s*app\.component\('NButton', NButton\);)/, "\\1\n    #{component_registration}")
+
+  File.write(PLUGIN_FILE, content)
+end
+
 # Generate file
 File.write(css_path, CSS_TEMPLATE)
 File.write(spec_path, SPEC_TEMPLATE)
 File.write(stories_path, STORIES_TEMPLATE)
 File.write(vue_path, VUE_TEMPLATE)
+
+update_plugin(name)
 
 # Generate success message
 puts "Generated #{name} component."
@@ -145,5 +172,6 @@ puts "  - #{css_path}"
 puts "  - #{spec_path}"
 puts "  - #{stories_path}"
 puts "  - #{vue_path}"
+puts "  - Updated index.ts"
 puts "Done!"
 puts "🚀"

@@ -27,3 +27,9 @@ Run test suite with:
 ```shell
 npx vitest
 ```
+
+Generate component template:
+
+```shell
+ruby generate.rb NComponentName
+```

@@ -4,6 +4,8 @@ import NOrderList from './src/stories/lists/order-list/NOrderList.vue';
 import NDropdown from './src/stories/NDropdown/NDropdown.vue';
 import NNavigationBar from './src/stories/NNavigationBar/NNavigationBar.vue';
 
+import Preview from './src/stories/Preview/Preview.vue';
+
 export interface NovaUIOptions {
   theme?: string;
   borderRadius?: string;
@@ -28,6 +30,7 @@ const NovaUI: Plugin = {
 
     // Register components globally
     app.component('NButton', NButton);
+    app.component('Preview', Preview);
     app.component('NNavigationBar', NNavigationBar);
     app.component('NDropdown', NDropdown);
     app.component('NOrderList', NOrderList);

@@ -1,4 +1,4 @@
-import{N as a}from"./NOrderList-Cak-t6-X.js";import"./vue.esm-bundler-B07jAq-Q.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const d={title:"Utilities/Lists/NOrderList",component:a,argTypes:{updateUrl:{control:"text"}}},m=n=>({components:{NOrderList:a},setup(){return{args:n}},template:`
+import{N as a}from"./NOrderList-CwMauLfx.js";import"./vue.esm-bundler-DjLMENKV.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const d={title:"Utilities/NOrderList",component:a,argTypes:{updateUrl:{control:"text"}}},m=n=>({components:{NOrderList:a},setup(){return{args:n}},template:`
     <NOrderList v-bind="args">
       <template #default="item">
         <p>{{ item.name }}</p>

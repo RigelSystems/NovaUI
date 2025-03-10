@@ -1,4 +1,4 @@
-import{N as p}from"./NDropdown-HkXrFaTI.js";import"./vue.esm-bundler-B07jAq-Q.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const c={title:"NDropdown",component:p,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},t={args:{label:"Click Me"},render:r=>({components:{NDropdown:p},setup(){return{args:r}},template:`<NDropdown>
+import{N as p}from"./NDropdown-CSC53Ngu.js";import"./vue.esm-bundler-DjLMENKV.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const c={title:"Utilities/NDropdown",component:p,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},t={args:{label:"Click Me"},render:r=>({components:{NDropdown:p},setup(){return{args:r}},template:`<NDropdown>
           <template #label>
             <button>Click Me</button>
           </template>

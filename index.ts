@@ -1,10 +1,14 @@
 import { type App, type Plugin } from 'vue';
-import NButton from './src/stories/button/NButton.vue';
+import NButton from './src/stories/NButton/NButton.vue';
 import NOrderList from './src/stories/lists/order-list/NOrderList.vue';
 import NDropdown from './src/stories/NDropdown/NDropdown.vue';
 import NNavigationBar from './src/stories/NNavigationBar/NNavigationBar.vue';
 
 import Preview from './src/stories/Preview/Preview.vue';
+
+import NCard from './src/stories/NCard/NCard.vue';
+
+import NRow from './src/stories/NRow/NRow.vue';
 
 export interface NovaUIOptions {
   theme?: string;
@@ -30,6 +34,8 @@ const NovaUI: Plugin = {
 
     // Register components globally
     app.component('NButton', NButton);
+    app.component('NRow', NRow);
+    app.component('NCard', NCard);
     app.component('Preview', Preview);
     app.component('NNavigationBar', NNavigationBar);
     app.component('NDropdown', NDropdown);

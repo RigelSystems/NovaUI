@@ -1,14 +1,3 @@
-<template>
-  <button
-    type="button"
-    :class="classes"
-    @click="onClick"
-    :style="{ backgroundColor: novaConfig.theme, borderRadius: novaConfig.borderRadius }"
-  >
-    {{ label }}
-  </button>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
 import './n-button.css';
@@ -29,7 +18,10 @@ export default defineComponent({
       type: String as () => 'small' | 'medium' | 'large',
       default: 'medium',
     },
-    backgroundColor: String,
+    backgroundColor: {
+      type: String,
+      default: '',
+    }
   },
   emits: ['click'],
   setup(props, { emit }) {
@@ -54,3 +46,14 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <button
+    type="button"
+    :class="classes"
+    @click="onClick"
+    :style="{ backgroundColor: novaConfig.theme, borderRadius: novaConfig.borderRadius }"
+  >
+    {{ label }}
+  </button>
+</template>

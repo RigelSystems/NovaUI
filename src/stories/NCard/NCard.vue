@@ -1,0 +1,57 @@
+<script lang="ts">
+  import { defineComponent, computed, inject } from 'vue';
+  import "./NCard.css";
+  import { NovaUIConfigSymbol } from '../../../index';
+  import NButton from '../NButton/NButton.vue';
+
+  export default defineComponent({
+    name: "NCard",
+    components: {
+      NButton,
+    },
+    props: {
+      title: {
+        type: String,
+        required: true,
+      },
+      subtitle: {
+        type: String,
+        default: '',
+      },
+      content: {
+        type: String,
+        default: '',
+      },
+      actionButtons: {
+        type: Array,
+        default: () => [],
+      },
+    },
+    setup(props) {
+      const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
+
+      return {
+        novaConfig,
+      };
+    },
+  });
+</script>
+
+<template>
+  <div class="n-card">
+    <h2 class="n-card__title">{{ title }}</h2>
+    <h6 class="n-card__subtitle">{{ subtitle }}</h6>
+    <hr>
+    <p v-if="content">{{ content }}</p>
+    <slot v-else name="content"></slot>
+    <hr>
+    <div v-if="actionButtons.length > 0" class="n-card__actions">
+      <n-button
+        v-for="(button, index) in actionButtons"
+        :key="index"
+        :label="button.label"
+      />
+    </div>
+    <slot v-else name="actions"></slot>
+  </div>
+</template>

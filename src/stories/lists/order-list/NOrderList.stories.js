@@ -1,7 +1,7 @@
 import NOrderList from './NOrderList.vue';
 
 export default {
-  title: 'Utilities/Lists/NOrderList',
+  title: 'Utilities/NOrderList',
   component: NOrderList,
   argTypes: {
     updateUrl: { control: 'text' },

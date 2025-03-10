@@ -2,6 +2,8 @@
   import { defineComponent, computed, inject } from 'vue';
   import "./Preview.css";
   import NNavigationBar from '../NNavigationBar/NNavigationBar.vue';
+  import NCard from '../NCard/NCard.vue';
+  import NRow from '../NRow/NRow.vue';
   import { NovaUIConfigSymbol } from '../../../index';
 
   interface Link {
@@ -13,6 +15,8 @@
     name: "Preview",
     components: {
       NNavigationBar,
+      NCard,
+      NRow,
     },
     props: {
       label: {
@@ -39,5 +43,13 @@
 <template>
   <div class="preview">
     <NNavigationBar :links="links"/>
+    <NRow :cols="{sm: [100], md: [60,40], lg: [33.33,33.33,33.33]}">
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+      <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
+    </NRow>
   </div>
 </template>

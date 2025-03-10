@@ -1,5 +1,4 @@
 import NRow from "./NRow.vue";
-import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -10,7 +9,7 @@ export default {
     label: { control: { type: 'text' } },
   },
   args: {
-    label: 'Button',
+    cols: {sm: [100]},
   },
   parameters: {
     docs: {

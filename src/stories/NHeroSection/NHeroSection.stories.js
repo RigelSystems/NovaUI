@@ -1,10 +1,9 @@
-import NCard from "./NCard.vue";
-import { fn } from '@storybook/test'
+import NHeroSection from "./NHeroSection.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Utilities/NCard",
-  component: NCard,
+  title: "NHeroSection",
+  component: NHeroSection,
   tags: ['autodocs'],
   argTypes: {
     title: { control: { type: 'text' } },
@@ -13,9 +12,9 @@ export default {
     actionButtons: { control: { type: 'object' } },
   },
   args: {
-    title: 'Title',
-    subtitle: 'Subtitle',
-    content: 'Loads of information about this card and what it does.',
+    title: 'Your title here',
+    subtitle: 'Your subtitle here',
+    content: 'Your content here',
     actionButtons: [
       { label: 'Action 1' },
       { label: 'Action 2' },
@@ -24,7 +23,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "A simple card component.",
+        component: "A hero section component."
       }
     }
   }

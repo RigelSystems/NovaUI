@@ -1,0 +1,6 @@
+.n-hero-section__actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 1rem;
+}

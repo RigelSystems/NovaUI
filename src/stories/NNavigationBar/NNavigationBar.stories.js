@@ -2,7 +2,7 @@ import NNavigationBar from "./NNavigationBar.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Utilities/NNavigationBar",
+  title: "Components/NNavigationBar",
   component: NNavigationBar,
   tags: ['autodocs'],
   argTypes: {

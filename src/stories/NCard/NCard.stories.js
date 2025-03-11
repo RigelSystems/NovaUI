@@ -1,9 +1,10 @@
+import NButton from "../NButton/NButton.vue";
 import NCard from "./NCard.vue";
 import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Utilities/NCard",
+  title: "Components/NCard",
   component: NCard,
   tags: ['autodocs'],
   argTypes: {

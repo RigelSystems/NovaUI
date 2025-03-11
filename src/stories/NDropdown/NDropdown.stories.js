@@ -1,7 +1,7 @@
 import NDropdown from "./NDropdown.vue";
 
 export default {
-  title: "Utilities/NDropdown",
+  title: "Components/NDropdown",
   component: NDropdown,
   tags: ["autodocs"],
   argTypes: {
@@ -13,10 +13,7 @@ export default {
 };
 
 // Default Story with Slot Content
-export const Default = {
-  args: {
-    label: "Click Me",
-  },
+export const WithSlots = {
   render: (args) => ({
     components: { NDropdown },
     setup() {
@@ -48,3 +45,10 @@ export const Default = {
     },
   },
 };
+
+export const WithProps = {
+  args: {
+    label: "Click Me",
+    content: 'Some great content here!!'
+  },
+}

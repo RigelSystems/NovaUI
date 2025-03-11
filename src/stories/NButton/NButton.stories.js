@@ -3,7 +3,7 @@ import NButton from './NButton.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Utilities/NButton',
+  title: 'Components/NButton',
   component: NButton,
   tags: ['autodocs'],
   argTypes: {

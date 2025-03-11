@@ -1,11 +1,13 @@
 <template>
   <div class="n-dropdown">
     <div @click="toggleDropdown">
-      <slot name="label"></slot>
+      <p v-if="$props.label">{{ $props.label }}</p>
+      <slot v-else name="label"></slot>
     </div>
 
     <div v-if="isOpen" class="n-dropdown-content">
-      <slot name="content"></slot>
+      <p v-if="$props.content">{{ $props.content }}</p>
+      <slot v-else name="content"></slot>
     </div>
   </div>
 </template>
@@ -15,6 +17,14 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: "NDropdown",
+  props: {
+    label: {
+      type: String,
+    },
+    content: {
+      type: String,
+    },
+  },
   setup() {
     const isOpen = ref(false);
 

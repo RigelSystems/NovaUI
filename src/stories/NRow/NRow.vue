@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, watch, PropType, inject } from 'vue';
+import { defineComponent, onMounted, watch, PropType, inject, ref } from 'vue';
 import { NovaUIConfigSymbol } from '../../../index';
 
 interface ColBreakpoints {
@@ -15,10 +15,12 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, { slots }) {
+  setup(props) {
     const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
 
-    // Define breakpoints
+    // Generate a unique class for each NRow instance
+    const uniqueClass = ref(`n-row-${Math.random().toString(36).substr(2, 9)}`);
+
     const breakpointsMap: Record<string, number> = {
       sm: 640,
       md: 768,
@@ -26,15 +28,13 @@ export default defineComponent({
       xl: 1280,
     };
 
-    const styleId = 'n-row-dynamic-styles';
-
     const injectDynamicStyles = () => {
       let css = `
-        .n-row {
+        .${uniqueClass.value} {
           display: flex;
           flex-wrap: wrap;
         }
-        .n-col {
+        .${uniqueClass.value} .n-col {
           box-sizing: border-box;
         }
       `;
@@ -45,7 +45,7 @@ export default defineComponent({
         const widths = props.cols[smallestBreakpoint];
         widths.forEach((widthValue, idx) => {
           css += `
-            .n-col:nth-child(${widths.length}n + ${idx + 1}) {
+            .${uniqueClass.value} .n-col:nth-child(${widths.length}n + ${idx + 1}) {
               width: ${widthValue}%;
             }
           `;
@@ -58,7 +58,7 @@ export default defineComponent({
         css += `@media (min-width: ${breakpointsMap[bp]}px) {\n`;
         widths.forEach((widthValue, idx) => {
           css += `
-            .n-col:nth-child(${widths.length}n + ${idx + 1}) {
+            .${uniqueClass.value} .n-col:nth-child(${widths.length}n + ${idx + 1}) {
               width: ${widthValue}%;
             }
           `;
@@ -66,7 +66,8 @@ export default defineComponent({
         css += `}\n`;
       }
 
-      // Inject or update dynamic style element
+      // Inject styles unique to this component
+      const styleId = `style-${uniqueClass.value}`;
       let styleEl = document.getElementById(styleId);
       if (!styleEl) {
         styleEl = document.createElement('style');
@@ -81,13 +82,14 @@ export default defineComponent({
 
     return {
       novaConfig,
+      uniqueClass,
     };
   },
 });
 </script>
 
 <template>
-  <div class="n-row">
+  <div :class="uniqueClass">
     <div class="n-col" v-for="(child, i) in $slots.default?.() || []" :key="i">
       <component :is="child" />
     </div>
@@ -95,5 +97,5 @@ export default defineComponent({
 </template>
 
 <style scoped>
-/* No static styles needed; all styles are injected dynamically */
+/* No static styles needed; all styles are dynamically injected */
 </style>

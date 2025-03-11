@@ -35,11 +35,11 @@
 </script>
 
 <template>
-  <div class="n-hero-section">
+  <div :class="`n-hero-section ${$slots.image ? 'n-hero-section--with-image' : ''}`">
     <div class="n-hero-section__textarea">
-      <h1>{{ title }}</h1>
-      <h3>{{ subtitle }}</h3>
-      <p>{{ content }}</p>
+      <h1 class="n-hero-section__title">{{ title }}</h1>
+      <h2 class="n-hero-section__subtitle">{{ subtitle }}</h2>
+      <p class="n-hero-section__content">{{ content }}</p>
       <div v-if="actionButtons.length > 0" class="n-hero-section__actions">
         <n-button
           v-for="(button, index) in actionButtons"
@@ -48,7 +48,7 @@
         />
       </div>
     </div>
-    <div class="n-hero-section__image">
+    <div class="n-hero-section__image" v-if="$slots.image">
       <slot name="image"></slot>
     </div>
   </div>

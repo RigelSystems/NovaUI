@@ -2,7 +2,7 @@ import NRow from "./NRow.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "NRow",
+  title: "Layout/NRow",
   component: NRow,
   tags: ['autodocs'],
   argTypes: {

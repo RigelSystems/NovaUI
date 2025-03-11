@@ -1,13 +1,3 @@
-<template>
-  <nav class="n-navigation-bar">
-    <ul>
-      <li v-for="link in links" :style="{ color: novaConfig.theme }">
-        <a :href="link.url">{{ link.label }}</a>
-      </li>
-    </ul>
-  </nav>
-</template>
-
 <script lang="ts">
   import { defineComponent, computed, inject, ref } from 'vue';
   import "./NNavigationBar.css";
@@ -37,3 +27,14 @@
     },
   });
 </script>
+
+<template>
+  <nav class="n-navigation-bar">
+    <ul>
+      <li v-for="link in links" :style="{ color: novaConfig.theme }">
+        <a :href="link.url">{{ link.label }}</a>
+      </li>
+    </ul>
+  </nav>
+</template>
+

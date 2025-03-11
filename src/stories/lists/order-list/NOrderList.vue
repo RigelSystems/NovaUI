@@ -1,26 +1,3 @@
-<template>
-  <div class="list-container">
-    <div v-if="loading" class="loading-overlay">
-      <p>Loading...</p>
-    </div>
-    <ul role="list" :class="{ disabled: loading }">
-      <li
-        v-for="item in sortedItems"
-        :key="item.id"
-        :class="`list-item ` + (item.id == draggedId ? 'dragging' : '')"
-        role="listitem"
-        draggable="true"
-        :aria-disabled="loading"
-        @dragstart="loading ? null : onDragStart($event, item.id)"
-        @dragover="reorder($event, item.id)"
-        @drop="loading ? null : onDrop(item.id)"
-      >
-        <slot v-bind="item" />
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref, computed, watch, nextTick } from 'vue';
 
@@ -149,7 +126,28 @@ export default defineComponent({
 });
 </script>
 
-
+<template>
+  <div class="list-container">
+    <div v-if="loading" class="loading-overlay">
+      <p>Loading...</p>
+    </div>
+    <ul role="list" :class="{ disabled: loading }">
+      <li
+        v-for="item in sortedItems"
+        :key="item.id"
+        :class="`list-item ` + (item.id == draggedId ? 'dragging' : '')"
+        role="listitem"
+        draggable="true"
+        :aria-disabled="loading"
+        @dragstart="loading ? null : onDragStart($event, item.id)"
+        @dragover="reorder($event, item.id)"
+        @drop="loading ? null : onDrop(item.id)"
+      >
+        <slot v-bind="item" />
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style scoped>
 .list-container {

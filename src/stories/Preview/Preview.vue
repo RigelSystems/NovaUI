@@ -55,7 +55,7 @@
 
     <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
 
-    <NRow :cols="{sm: [100], md: [60,40, 40, 60], lg: [33.33,33.33,33.33]}">
+    <NRow :cols="{sm: [100], md: [60,40,40,60], lg: [33.33,33.33,33.33]}">
       <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
       <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />
       <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', url: '/home'}]" />

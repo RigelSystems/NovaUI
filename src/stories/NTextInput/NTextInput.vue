@@ -2,7 +2,6 @@
   import { defineComponent, computed, inject } from 'vue';
   import "./NTextInput.css";
   import { NovaUIConfigSymbol } from '../../../index';
-import { Placeholder } from 'storybook/internal/components';
 
   export default defineComponent({
     name: "NTextInput",

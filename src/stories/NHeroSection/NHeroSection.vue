@@ -1,8 +1,9 @@
 <script lang="ts">
-  import { defineComponent, computed, inject } from 'vue';
+  import { defineComponent, computed, inject, defineAsyncComponent } from 'vue';
   import "./NHeroSection.css";
   import { NovaUIConfigSymbol } from '../../../index';
-  import NButton from '../NButton/NButton.vue';
+
+  const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
   export default defineComponent({
     name: "NHeroSection",

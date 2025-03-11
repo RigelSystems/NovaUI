@@ -1,4 +1,4 @@
-import{N as p}from"./NDropdown-CSC53Ngu.js";import"./vue.esm-bundler-DjLMENKV.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const c={title:"Utilities/NDropdown",component:p,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},t={args:{label:"Click Me"},render:r=>({components:{NDropdown:p},setup(){return{args:r}},template:`<NDropdown>
+import l from"./NDropdown-DKJSbasw.js";import"./vue.esm-bundler-DsTscZPD.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const u={title:"Components/NDropdown",component:l,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},e={render:c=>({components:{NDropdown:l},setup(){return{args:c}},template:`<NDropdown>
           <template #label>
             <button>Click Me</button>
           </template>
@@ -14,10 +14,7 @@ import{N as p}from"./NDropdown-CSC53Ngu.js";import"./vue.esm-bundler-DjLMENKV.js
           <template #content>
             <p>This is the dropdown content!</p>
           </template>
-        </NDropdown>`}}}};var e,n,o;t.parameters={...t.parameters,docs:{...(e=t.parameters)==null?void 0:e.docs,source:{originalSource:`{
-  args: {
-    label: "Click Me"
-  },
+        </NDropdown>`}}}},t={args:{label:"Click Me",content:"Some great content here!!"}};var n,o,r;e.parameters={...e.parameters,docs:{...(n=e.parameters)==null?void 0:n.docs,source:{originalSource:`{
   render: args => ({
     components: {
       NDropdown
@@ -52,4 +49,9 @@ import{N as p}from"./NDropdown-CSC53Ngu.js";import"./vue.esm-bundler-DjLMENKV.js
       }
     }
   }
-}`,...(o=(n=t.parameters)==null?void 0:n.docs)==null?void 0:o.source}}};const d=["Default"];export{t as Default,d as __namedExportsOrder,c as default};
+}`,...(r=(o=e.parameters)==null?void 0:o.docs)==null?void 0:r.source}}};var p,a,s;t.parameters={...t.parameters,docs:{...(p=t.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  args: {
+    label: "Click Me",
+    content: 'Some great content here!!'
+  }
+}`,...(s=(a=t.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};const w=["WithSlots","WithProps"];export{t as WithProps,e as WithSlots,w as __namedExportsOrder,u as default};

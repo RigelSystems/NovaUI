@@ -1,10 +1,9 @@
 <script lang="ts">
-import { defineComponent, onMounted, watch, PropType, inject, ref } from 'vue';
+import { defineComponent, onMounted, watch, PropType, inject, ref, computed } from 'vue';
 import { NovaUIConfigSymbol } from '../../../index';
 
 interface ColBreakpoints {
   [breakpoint: string]: number[];
-  // Example: { sm: [100], md: [60, 40], lg: [33.33, 33.33, 33.33] }
 }
 
 export default defineComponent({
@@ -14,59 +13,65 @@ export default defineComponent({
       type: Object as PropType<ColBreakpoints>,
       required: true,
     },
+    gap: {
+      type: String,
+      default: '1rem',
+    }
   },
   setup(props) {
     const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
 
-    // Generate a unique class for each NRow instance
     const uniqueClass = ref(`n-row-${Math.random().toString(36).substr(2, 9)}`);
-
     const breakpointsMap: Record<string, number> = {
-      sm: 640,
+      sm: 0,
       md: 768,
       lg: 1024,
       xl: 1280,
     };
 
+    const convertGapToPixels = (gap: string): number => {
+      if (gap.endsWith('px')) return parseFloat(gap);
+      if (gap.endsWith('rem')) return parseFloat(gap) * 16;
+      if (gap.endsWith('em')) return parseFloat(gap) * 16;
+      return 16; // Default to 1rem if unknown unit
+    };
+
     const injectDynamicStyles = () => {
+      const gapSize = convertGapToPixels(props.gap);
       let css = `
         .${uniqueClass.value} {
           display: flex;
           flex-wrap: wrap;
+          gap: ${props.gap};
         }
         .${uniqueClass.value} .n-col {
           box-sizing: border-box;
         }
       `;
 
-      // Get the smallest defined breakpoint (for default styles)
-      const smallestBreakpoint = Object.keys(props.cols)[0] as keyof ColBreakpoints;
-      if (smallestBreakpoint) {
-        const widths = props.cols[smallestBreakpoint];
-        widths.forEach((widthValue, idx) => {
-          css += `
-            .${uniqueClass.value} .n-col:nth-child(${widths.length}n + ${idx + 1}) {
-              width: ${widthValue}%;
+      const addStylesForBreakpoint = (breakpoint: string, widths: number[]) => {
+        const numCols = widths.length;
+        const adjustedWidths = widths.map(width => `calc(${width}% - ${(gapSize * (numCols - 1)) / numCols}px)`);
+
+        let mediaQuery = breakpointsMap[breakpoint] ? `@media (min-width: ${breakpointsMap[breakpoint]}px) {` : '';
+        adjustedWidths.forEach((width, idx) => {
+          mediaQuery += `
+            .${uniqueClass.value} .n-col:nth-child(${numCols}n + ${idx + 1}) {
+              width: ${width};
             }
           `;
         });
-      }
+        mediaQuery += breakpointsMap[breakpoint] ? `}` : '';
+        css += mediaQuery;
+      };
 
-      // Generate styles for larger breakpoints
-      for (const [bp, widths] of Object.entries(props.cols)) {
-        if (!breakpointsMap[bp]) continue;
-        css += `@media (min-width: ${breakpointsMap[bp]}px) {\n`;
-        widths.forEach((widthValue, idx) => {
-          css += `
-            .${uniqueClass.value} .n-col:nth-child(${widths.length}n + ${idx + 1}) {
-              width: ${widthValue}%;
-            }
-          `;
+      const breakpoints = Object.keys(props.cols) as (keyof ColBreakpoints)[];
+      if (breakpoints.length) {
+        breakpoints.forEach(bp => {
+          addStylesForBreakpoint(bp, props.cols[bp]);
         });
-        css += `}\n`;
       }
 
-      // Inject styles unique to this component
       const styleId = `style-${uniqueClass.value}`;
       let styleEl = document.getElementById(styleId);
       if (!styleEl) {

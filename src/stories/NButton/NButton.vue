@@ -34,6 +34,11 @@ export default defineComponent({
       [`storybook-button--${props.size}`]: true,
     }));
 
+    const styles = computed(() => ({
+      backgroundColor: novaConfig.theme,
+      borderRadius: novaConfig.borderRadius,
+    }));
+
     const onClick = () => {
       emit('click');
     };
@@ -41,6 +46,7 @@ export default defineComponent({
     return {
       novaConfig,
       classes,
+      styles,
       onClick,
     };
   },
@@ -52,7 +58,7 @@ export default defineComponent({
     type="button"
     :class="classes"
     @click="onClick"
-    :style="{ backgroundColor: novaConfig.theme, borderRadius: novaConfig.borderRadius }"
+    :style="styles"
   >
     {{ label }}
   </button>

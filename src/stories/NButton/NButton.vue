@@ -12,7 +12,7 @@ export default defineComponent({
     },
     primary: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     size: {
       type: String as () => 'small' | 'medium' | 'large',
@@ -21,11 +21,15 @@ export default defineComponent({
     backgroundColor: {
       type: String,
       default: '',
-    }
+    },
+    href: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
+    const novaConfig = inject(NovaUIConfigSymbol, { theme: '#27c2fa', borderRadius: '4px' });
 
     const classes = computed(() => ({
       'storybook-button': true,
@@ -34,10 +38,23 @@ export default defineComponent({
       [`storybook-button--${props.size}`]: true,
     }));
 
-    const styles = computed(() => ({
-      backgroundColor: novaConfig.theme,
-      borderRadius: novaConfig.borderRadius,
-    }));
+    const styles = computed(() => {
+      const baseStyles = {
+        borderRadius: novaConfig.borderRadius,
+        backgroundColor: null,
+        border: null,
+        color: null,
+      };
+
+      if (props.primary) {
+        baseStyles.backgroundColor = novaConfig.theme;
+      } else {
+        baseStyles.border = `1px solid ${novaConfig.theme}`;
+      }
+
+      return baseStyles;
+    });
+
 
     const onClick = () => {
       emit('click');
@@ -59,6 +76,7 @@ export default defineComponent({
     :class="classes"
     @click="onClick"
     :style="styles"
+    :href="href"
   >
     {{ label }}
   </button>

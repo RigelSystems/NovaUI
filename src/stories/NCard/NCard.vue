@@ -5,6 +5,13 @@
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
+  interface ActionButton {
+    label: string;
+    href: string;
+    primary?: boolean;
+    size?: 'small' | 'medium' | 'large';
+  }
+
   export default defineComponent({
     name: "NCard",
     components: {
@@ -24,7 +31,7 @@
         default: '',
       },
       actionButtons: {
-        type: Array,
+        type: Array as () => ActionButton[],
         default: () => [],
       },
     },
@@ -42,15 +49,18 @@
   <div class="n-card">
     <h2 class="n-card__title">{{ title }}</h2>
     <h6 class="n-card__subtitle">{{ subtitle }}</h6>
-    <hr>
+
     <p v-if="content">{{ content }}</p>
     <slot v-else name="content"></slot>
-    <hr>
+
     <div v-if="actionButtons.length > 0" class="n-card__actions">
       <n-button
         v-for="(button, index) in actionButtons"
         :key="index"
         :label="button.label"
+        :primary="button.primary"
+        :href="button.href"
+        :size="button.size"
       />
     </div>
     <slot v-else name="actions"></slot>

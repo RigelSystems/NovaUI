@@ -16,6 +16,14 @@ export default defineComponent({
     gap: {
       type: String,
       default: '1rem',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    subtitle: {
+      type: String,
+      default: '',
     }
   },
   setup(props) {
@@ -94,9 +102,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div :class="uniqueClass">
-    <div class="n-col" v-for="(child, i) in $slots.default?.() || []" :key="i">
-      <component :is="child" />
+  <div>
+    <h1 class="text-center" v-if="title">{{ title }}</h1>
+    <h2 class="text-center" v-if="subtitle">{{ subtitle }}</h2>
+
+    <div :class="uniqueClass">
+      <div class="n-col" v-for="(child, i) in $slots.default?.() || []" :key="i">
+        <component :is="child" />
+      </div>
     </div>
   </div>
 </template>

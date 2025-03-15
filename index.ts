@@ -8,6 +8,7 @@ import NCard from './src/stories/NCard/NCard.vue';
 import NRow from './src/stories/NRow/NRow.vue';
 import NHeroSection from './src/stories/NHeroSection/NHeroSection.vue';
 import NTextInput from './src/stories/NTextInput/NTextInput.vue';
+import NPaint from './src/stories/NPaint/NPaint.vue';
 
 function adjustColor(hex: string, percent: number): string {
   let r = parseInt(hex.substring(1, 3), 16);
@@ -58,6 +59,7 @@ const NovaUI: Plugin = {
 
     // Register components globally
     app.component('NButton', NButton);
+    app.component('NPaint', NPaint);
     app.component('NTextInput', NTextInput);
     app.component('NHeroSection', NHeroSection);
     app.component('NRow', NRow);

@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import "./NDropdown.css";
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
   name: "NDropdown",
@@ -28,12 +29,15 @@ export default defineComponent({
 
 <template>
   <div class="n-dropdown">
-    <div @click="toggleDropdown">
-      <p v-if="$props.label">{{ $props.label }}</p>
+    <div @click="toggleDropdown" class="n-dropdown__header">
+      <p class="n-dropdown__header-text" v-if="$props.label">{{ $props.label }}</p>
       <slot v-else name="label"></slot>
     </div>
 
-    <div v-if="isOpen" class="n-dropdown-content">
+    <div 
+      ref="dropdownContent"
+      :class="['n-dropdown__content', { 'n-dropdown__content--open': isOpen }]"
+    >
       <p v-if="$props.content">{{ $props.content }}</p>
       <slot v-else name="content"></slot>
     </div>

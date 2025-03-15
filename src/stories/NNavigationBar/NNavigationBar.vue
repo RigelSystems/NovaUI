@@ -15,6 +15,10 @@ export default defineComponent({
       type: Array as () => NavigationLink[],
       default: () => [],
     },
+    mobileBottomLinks: {
+      type: Array as () => NavigationLink[],
+      default: () => [],
+    },
   },
   setup(props) {
     const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
@@ -29,6 +33,7 @@ export default defineComponent({
       isOpen,
       toggleSidebar,
       links: props.links,
+      mobileBottomLinks: props.mobileBottomLinks,
     };
   },
 });
@@ -49,8 +54,17 @@ export default defineComponent({
     <!-- Mobile Sidebar -->
     <div class="sidebar" :class="{ open: isOpen }">
       <button class="close-button" @click="toggleSidebar">×</button>
+      
+      <!-- Main Mobile Navigation -->
       <ul class="n-navigation-bar__mobile-nav">
         <li v-for="link in links" :key="link.url" :style="{ color: novaConfig.theme }">
+          <a :href="link.url">{{ link.label }}</a>
+        </li>
+      </ul>
+
+      <!-- Mobile Bottom Links -->
+      <ul v-if="mobileBottomLinks.length" class="n-navigation-bar__mobile-bottom-nav">
+        <li v-for="link in mobileBottomLinks" :key="link.url" :style="{ color: novaConfig.theme }">
           <a :href="link.url">{{ link.label }}</a>
         </li>
       </ul>
@@ -59,4 +73,14 @@ export default defineComponent({
     <!-- Overlay (dark background on mobile) -->
     <div v-if="isOpen" class="overlay" @click="toggleSidebar"></div>
   </nav>
+
+  <div class="n-navigation-bar__bottom-nav">
+      <ul>
+        <li v-for="link in mobileBottomLinks" :key="link.url">
+          <a :href="link.url">
+            <span class="label">{{ link.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 </template>

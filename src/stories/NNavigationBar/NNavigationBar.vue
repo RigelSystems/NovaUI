@@ -74,7 +74,7 @@ export default defineComponent({
     <div v-if="isOpen" class="overlay" @click="toggleSidebar"></div>
   </nav>
 
-  <div class="n-navigation-bar__bottom-nav">
+  <div class="n-navigation-bar__bottom-nav" v-if="mobileBottomLinks.length > 0">
       <ul>
         <li v-for="link in mobileBottomLinks" :key="link.url">
           <a :href="link.url">

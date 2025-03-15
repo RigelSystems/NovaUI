@@ -49,13 +49,18 @@ export default defineComponent({
 });
 </script>
 
-
 <template>
   <div class="palette">
     <input type="color" v-model="selectedColor" class="color-picker" />
   </div>
 
-  <div class="pixel-canvas">
+  <div
+    class="pixel-canvas"
+    :style="{
+      '--cell-width': `${100 / $props.gridX}%`,
+      '--cell-height': `${100 / $props.gridY}%`
+    }"
+  >
     <div v-for="(row, rowIndex) in pixelData" :key="rowIndex" class="pixel-row">
       <div
         v-for="(color, colIndex) in row"
@@ -85,16 +90,20 @@ export default defineComponent({
 
 .pixel-canvas {
   display: inline-block;
-  margin-bottom: 10px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .pixel-row {
   display: flex;
+  height: var(--cell-height); /* Each row gets dynamic height */
 }
 
 .pixel-cell {
-  width: 20px;
-  height: 20px;
+  width: var(--cell-width); /* Each cell gets dynamic width */
+  height: 100%; /* Make sure it fills the row */
   border: 1px solid #ccc;
   cursor: pointer;
 }
@@ -103,5 +112,14 @@ export default defineComponent({
   width: 3px;
   height: 3px;
   border: none;
+  box-sizing: border-box; /* Prevents extra size from borders */
+}
+
+.pixel-cell:not(:last-child) {
+  border-right: none; /* Removes duplicate borders between cells */
+}
+
+.pixel-row:not(:last-child) .pixel-cell {
+  border-bottom: none; /* Removes duplicate horizontal borders */
 }
 </style>

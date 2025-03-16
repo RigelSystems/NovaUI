@@ -1,6 +1,5 @@
 <script lang="ts">
 import { defineComponent, onMounted, watch, PropType, inject, ref, useSlots } from 'vue';
-import { NovaUIConfigSymbol } from '../../../index';
 
 // how to assign these as options?
 interface ColBreakpoints {
@@ -32,8 +31,6 @@ export default defineComponent({
   },
   setup(props) {
     const slots = useSlots();
-    const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
-
     const uniqueClass = ref(`n-row-${Math.random().toString(36).substr(2, 9)}`);
     const breakpointsMap: Record<string, number> = {
       sm: 0,
@@ -99,7 +96,6 @@ export default defineComponent({
     watch(() => props.cols, injectDynamicStyles, { deep: true });
 
     return {
-      novaConfig,
       uniqueClass,
       slots,
     };

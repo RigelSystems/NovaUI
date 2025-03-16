@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, inject } from 'vue';
   import "./NTextInput.css";
-  import { NovaUIConfigSymbol } from '../../../index';
 
   export default defineComponent({
     name: "NTextInput",
@@ -20,11 +19,7 @@
       },
     },
     setup(props) {
-      const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
-
-      return {
-        novaConfig,
-      };
+      return {};
     },
   });
 </script>

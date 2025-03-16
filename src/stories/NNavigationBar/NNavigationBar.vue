@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, inject } from 'vue';
 import './NNavigationBar.css';
-import { NovaUIConfigSymbol } from '../../../index';
 
 interface NavigationLink {
   label: string;
@@ -21,7 +20,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
     const isOpen = ref(false);
 
     function toggleSidebar() {
@@ -29,7 +27,6 @@ export default defineComponent({
     }
 
     return {
-      novaConfig,
       isOpen,
       toggleSidebar,
       links: props.links,
@@ -43,7 +40,7 @@ export default defineComponent({
   <nav class="n-navigation-bar">
     <!-- Desktop Nav -->
     <ul class="n-navigation-bar__desktop-nav">
-      <li v-for="link in links" :key="link.url" :style="{ color: novaConfig.theme }">
+      <li v-for="link in links" :key="link.url">
         <a :href="link.url">{{ link.label }}</a>
       </li>
     </ul>
@@ -57,14 +54,14 @@ export default defineComponent({
       
       <!-- Main Mobile Navigation -->
       <ul class="n-navigation-bar__mobile-nav">
-        <li v-for="link in links" :key="link.url" :style="{ color: novaConfig.theme }">
+        <li v-for="link in links" :key="link.url">
           <a :href="link.url">{{ link.label }}</a>
         </li>
       </ul>
 
       <!-- Mobile Bottom Links -->
       <ul v-if="mobileBottomLinks.length" class="n-navigation-bar__mobile-bottom-nav">
-        <li v-for="link in mobileBottomLinks" :key="link.url" :style="{ color: novaConfig.theme }">
+        <li v-for="link in mobileBottomLinks" :key="link.url">
           <a :href="link.url">{{ link.label }}</a>
         </li>
       </ul>

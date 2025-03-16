@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, inject, defineAsyncComponent } from 'vue';
   import "./Preview.css";
-  import { NovaUIConfigSymbol } from '../../../index';
 
   const NHeroSection = defineAsyncComponent(() => import('../NHeroSection/NHeroSection.vue'));
   const NDropdown = defineAsyncComponent(() => import('../NDropdown/NDropdown.vue'));
@@ -39,10 +38,7 @@
         { label: 'About', url: '/about' },
         { label: 'Contact', url: '/contact' },
       ]);
-      const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
-
       return {
-        novaConfig,
         links,
       };
     },

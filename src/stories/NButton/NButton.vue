@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
 import './n-button.css';
-import { NovaUIConfigSymbol } from '../../../index';
 
 export default defineComponent({
   name: 'NButton',
@@ -29,8 +28,6 @@ export default defineComponent({
   },
   emits: ['click'],
   setup(props, { emit }) {
-    const novaConfig = inject(NovaUIConfigSymbol, { theme: '#27c2fa', borderRadius: '4px' });
-
     const classes = computed(() => ({
       'storybook-button': true,
       'storybook-button--primary': props.primary,
@@ -40,17 +37,10 @@ export default defineComponent({
 
     const styles = computed(() => {
       const baseStyles = {
-        borderRadius: novaConfig.borderRadius,
         backgroundColor: null,
         border: null,
         color: null,
       };
-
-      if (props.primary) {
-        baseStyles.backgroundColor = novaConfig.theme;
-      } else {
-        baseStyles.border = `1px solid ${novaConfig.theme}`;
-      }
 
       return baseStyles;
     });
@@ -61,7 +51,6 @@ export default defineComponent({
     };
 
     return {
-      novaConfig,
       classes,
       styles,
       onClick,

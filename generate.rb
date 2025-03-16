@@ -69,22 +69,12 @@ VUE_TEMPLATE =
   <script lang="ts">
     import { defineComponent, computed, inject } from 'vue';
     import "./#{name}.css";
-    import { NovaUIConfigSymbol } from '../../../index';
 
     export default defineComponent({
       name: "#{name}",
-      props: {
-        label: {
-          type: String,
-          required: true,
-        },
-      },
+      props: {},
       setup(props) {
-        const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
-
-        return {
-          novaConfig,
-        };
+        return {};
       },
     });
   </script>

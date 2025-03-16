@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, inject, defineAsyncComponent } from 'vue';
   import "./NHeroSection.css";
-  import { NovaUIConfigSymbol } from '../../../index';
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
@@ -31,11 +30,7 @@
       },
     },
     setup(props) {
-      const novaConfig = inject(NovaUIConfigSymbol, { theme: '#000000', borderRadius: '4px' });
-
-      return {
-        novaConfig,
-      };
+      return {};
     },
   });
 </script>

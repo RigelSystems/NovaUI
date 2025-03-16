@@ -5,6 +5,11 @@
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
+  interface ActionButton {
+    label: string;
+    href: string;
+  }
+
   export default defineComponent({
     name: "NHeroSection",
     components: {
@@ -21,7 +26,7 @@
         type: String,
       },
       actionButtons: {
-        type: Array,
+        type: Array as () => ActionButton[],
         default: () => [],
       },
     },

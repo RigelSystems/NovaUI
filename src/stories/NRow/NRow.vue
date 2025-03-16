@@ -1,9 +1,13 @@
 <script lang="ts">
-import { defineComponent, onMounted, watch, PropType, inject, ref, computed } from 'vue';
+import { defineComponent, onMounted, watch, PropType, inject, ref, useSlots } from 'vue';
 import { NovaUIConfigSymbol } from '../../../index';
 
+// how to assign these as options?
 interface ColBreakpoints {
-  [breakpoint: string]: number[];
+  sm?: number[] | null;
+  md?: number[] | null;
+  lg?: number[] | null;
+  xl?: number[] | null;
 }
 
 export default defineComponent({
@@ -27,6 +31,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const slots = useSlots();
     const novaConfig = inject(NovaUIConfigSymbol, { theme: 'blue', borderRadius: '4px' });
 
     const uniqueClass = ref(`n-row-${Math.random().toString(36).substr(2, 9)}`);
@@ -96,6 +101,7 @@ export default defineComponent({
     return {
       novaConfig,
       uniqueClass,
+      slots,
     };
   },
 });
@@ -107,7 +113,7 @@ export default defineComponent({
     <h2 class="text-center" v-if="subtitle">{{ subtitle }}</h2>
 
     <div :class="uniqueClass">
-      <div class="n-col" v-for="(child, i) in $slots.default?.() || []" :key="i">
+      <div class="n-col" v-for="(child, i) in slots.default?.() || []" :key="i">
         <component :is="child" />
       </div>
     </div>

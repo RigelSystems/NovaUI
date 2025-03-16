@@ -58,13 +58,6 @@ export default defineComponent({
           <a :href="link.url">{{ link.label }}</a>
         </li>
       </ul>
-
-      <!-- Mobile Bottom Links -->
-      <ul v-if="mobileBottomLinks.length" class="n-navigation-bar__mobile-bottom-nav">
-        <li v-for="link in mobileBottomLinks" :key="link.url">
-          <a :href="link.url">{{ link.label }}</a>
-        </li>
-      </ul>
     </div>
 
     <!-- Overlay (dark background on mobile) -->

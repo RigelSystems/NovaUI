@@ -16,8 +16,9 @@ export default {
       { label: 'Contact', url: '/contact' },
     ],
     mobileBottomLinks: [
-      { label: 'Privacy Policy', url: '/privacy' },
-      { label: 'Terms of Service', url: '/terms' },
+      { url: '/home', icon: 'mdi-home-account' },
+      { url: '/about', icon: 'mdi-information' },
+      { url: '/contact', icon: 'mdi-email' },
     ],
   },
   parameters: {

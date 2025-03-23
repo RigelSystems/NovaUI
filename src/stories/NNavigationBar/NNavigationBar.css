@@ -115,11 +115,20 @@
   width: 100%;
   justify-content: space-around;
 }
+
+.n-navigation-bar__bottom-nav li {
+  display: block;
+  width: 100%;
+}
+
 .n-navigation-bar__bottom-nav a {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: #333;
   font-size: 14px;
+}
+
+.mdi {
+  font-size: 1.5rem;
 }

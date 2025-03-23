@@ -1,10 +1,11 @@
 <script lang="ts">
-import { defineComponent, ref, inject } from 'vue';
+import { defineComponent, ref } from 'vue';
 import './NNavigationBar.css';
 
 interface NavigationLink {
   label: string;
   url: string;
+  icon?: string;
 }
 
 export default defineComponent({
@@ -59,16 +60,17 @@ export default defineComponent({
         </li>
       </ul>
     </div>
-
+    
     <!-- Overlay (dark background on mobile) -->
     <div v-if="isOpen" class="overlay" @click="toggleSidebar"></div>
   </nav>
-
+  
   <div class="n-navigation-bar__bottom-nav" v-if="mobileBottomLinks.length > 0">
-      <ul>
-        <li v-for="link in mobileBottomLinks" :key="link.url">
-          <a :href="link.url">
-            <span class="label">{{ link.label }}</span>
+    <ul>
+      <li v-for="link in mobileBottomLinks" :key="link.url">
+        <a :href="link.url">
+          <span class="label" v-if="link.label">{{ link.label }}</span>
+          <span :class="['mdi', link.icon]" v-if="link.icon"></span>
           </a>
         </li>
       </ul>

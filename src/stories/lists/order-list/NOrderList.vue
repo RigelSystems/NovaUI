@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch, nextTick } from 'vue';
+import './NOrderList.css';
 
 interface OrderItem {
   id: number;
@@ -127,15 +128,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="list-container">
-    <div v-if="loading" class="loading-overlay">
+    <div v-if="loading" class="n-order-list__loading-overlay">
+  <div class="n-order-list">
       <p>Loading...</p>
     </div>
-    <ul role="list" :class="{ disabled: loading }">
+    <ul role="list" :class="{ 'n-order-list__disabled': loading }">
       <li
         v-for="item in sortedItems"
         :key="item.id"
-        :class="`list-item ` + (item.id == draggedId ? 'dragging' : '')"
+        :class="`n-order-list__list-item ` + (item.id == draggedId ? 'n-order-list__dragging' : '')"
         role="listitem"
         draggable="true"
         :aria-disabled="loading"
@@ -148,42 +149,3 @@ export default defineComponent({
     </ul>
   </div>
 </template>
-
-<style scoped>
-.list-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.list-item {
-  padding: 10px;
-  cursor: move;
-  user-select: none;
-  transition: 0s;
-}
-
-/* Loading State */
-.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
-.loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-</style>

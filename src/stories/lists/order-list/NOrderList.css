@@ -1,0 +1,39 @@
+.n-order-list {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.n-order-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.n-order-list__list-item {
+  padding: 10px;
+  cursor: move;
+  user-select: none;
+  transition: 0s;
+}
+
+.n-order-list__dragging {
+  background-color: #f5f5f5;
+}
+
+/* Loading State */
+.n-order-list__disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.n-order-list__loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}

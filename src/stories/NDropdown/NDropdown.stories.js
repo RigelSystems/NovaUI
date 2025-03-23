@@ -5,7 +5,7 @@ export default {
   component: NDropdown,
   tags: ["autodocs"],
   argTypes: {
-    label: { control: "text" }, // Allows changing button label in Storybook controls
+    label: { control: "text" },
   },
   args: {
     label: "Toggle Dropdown",
@@ -49,6 +49,7 @@ export const WithSlots = {
 export const WithProps = {
   args: {
     label: "Click Me",
-    content: 'Some great content here!!'
+    content: 'Some great content here!!',
+    chevron: true,
   },
 }

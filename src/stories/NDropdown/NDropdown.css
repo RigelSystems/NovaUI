@@ -10,6 +10,8 @@
     background-color: #f9f9f9;
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .n-dropdown__header-text {
@@ -27,8 +29,16 @@
 
 .n-dropdown__content--open {
     max-height: 500px;
-    /* Large enough to fit most content */
     opacity: 1;
+}
+
+.n-dropdown__caret {
+    transition: 0.3s;
+    transform: rotate(0deg);
+}
+
+.n-dropdown__caret--open {
+    transform: rotate(180deg);
 }
 
 /* Bottom Navigation Bar */

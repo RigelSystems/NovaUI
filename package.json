@@ -29,6 +29,7 @@
     "chromatic": "npx chromatic --project-token=chpt_322c142ec2c1ce6"
   },
   "dependencies": {
+    "@phosphor-icons/vue": "^2.2.1",
     "vue": "3"
   },
   "devDependencies": {

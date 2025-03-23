@@ -1,15 +1,23 @@
 <script lang="ts">
 import "./NDropdown.css";
 import { defineComponent, ref, computed } from 'vue';
+import { PhCaretDown } from "@phosphor-icons/vue";
 
 export default defineComponent({
   name: "NDropdown",
+  components: {
+    PhCaretDown
+  },
   props: {
     label: {
       type: String,
     },
     content: {
       type: String,
+    },
+    chevron: {
+      type: Boolean,
+      default: true,
     },
   },
   setup() {
@@ -30,6 +38,7 @@ export default defineComponent({
 <template>
   <div class="n-dropdown">
     <div @click="toggleDropdown" class="n-dropdown__header">
+      <PhCaretDown :size="18" weight="bold" :class="['n-dropdown__caret', {'n-dropdown__caret--open': isOpen}]" v-if="chevron"/>
       <p class="n-dropdown__header-text" v-if="$props.label">{{ $props.label }}</p>
       <slot v-else name="label"></slot>
     </div>

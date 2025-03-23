@@ -128,8 +128,8 @@ export default defineComponent({
 </script>
 
 <template>
-    <div v-if="loading" class="n-order-list__loading-overlay">
   <div class="n-order-list">
+    <div v-if="loading" class="n-order-list__loading-overlay">
       <p>Loading...</p>
     </div>
     <ul role="list" :class="{ 'n-order-list__disabled': loading }">

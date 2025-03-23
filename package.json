@@ -4,7 +4,7 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "version": "0.0.20",
+  "version": "0.0.21",
   "private": false,
   "type": "module",
   "description": "Vue Library",

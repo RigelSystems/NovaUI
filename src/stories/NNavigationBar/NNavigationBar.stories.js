@@ -11,7 +11,7 @@ export default {
   },
   args: {
     links: [
-      { label: 'Home', url: '/' },
+      { label: 'Home', url: '/home' },
       { label: 'About', url: '/about' },
       { label: 'Contact', url: '/contact' },
     ],
@@ -20,6 +20,7 @@ export default {
       { url: '/about', icon: 'mdi-information' },
       { url: '/contact', icon: 'mdi-email' },
     ],
+    currentPath: '/home'
   },
   parameters: {
     docs: {

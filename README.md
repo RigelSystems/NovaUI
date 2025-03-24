@@ -47,7 +47,3 @@ Bump the version in the package.json and tag the commit, this will trigger the p
 `git tag v0.0.0`
 
 `git push origin v0.0.0`
-
-## Icons
-
-https://phosphoricons.com/

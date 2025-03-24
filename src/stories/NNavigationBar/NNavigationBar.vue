@@ -19,6 +19,10 @@ export default defineComponent({
       type: Array as () => NavigationLink[],
       default: () => [],
     },
+    currentPath: {
+      type: String,
+      default: '',
+    }
   },
   setup(props) {
     const isOpen = ref(false);
@@ -30,7 +34,6 @@ export default defineComponent({
     return {
       isOpen,
       toggleSidebar,
-      links: props.links,
       mobileBottomLinks: props.mobileBottomLinks,
     };
   },
@@ -41,7 +44,7 @@ export default defineComponent({
   <nav class="n-navigation-bar">
     <!-- Desktop Nav -->
     <ul class="n-navigation-bar__desktop-nav">
-      <li v-for="link in links" :key="link.url">
+      <li v-for="link in $props.links" :key="link.url" :class="{ 'n-navigation-bar__desktop--active': $props.currentPath === link.url }">
         <a :href="link.url">{{ link.label }}</a>
       </li>
     </ul>
@@ -55,7 +58,7 @@ export default defineComponent({
       
       <!-- Main Mobile Navigation -->
       <ul class="n-navigation-bar__mobile-nav">
-        <li v-for="link in links" :key="link.url">
+        <li v-for="link in links" :key="link.url" :class="{ 'n-navigation-bar__mobile--active': $props.currentPath === link.url }">
           <a :href="link.url">{{ link.label }}</a>
         </li>
       </ul>
@@ -67,7 +70,7 @@ export default defineComponent({
   
   <div class="n-navigation-bar__bottom-nav" v-if="mobileBottomLinks.length > 0">
     <ul>
-      <li v-for="link in mobileBottomLinks" :key="link.url">
+      <li v-for="link in mobileBottomLinks" :key="link.url" :class="{ 'n-navigation-bar__mobile-bottom--active': $props.currentPath === link.url }">
         <a :href="link.url">
           <span class="label" v-if="link.label">{{ link.label }}</span>
           <span :class="['mdi', link.icon]" v-if="link.icon"></span>

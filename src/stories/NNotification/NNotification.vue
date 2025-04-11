@@ -1,6 +1,6 @@
 <script lang="ts">
   import { defineComponent, defineAsyncComponent } from 'vue';
-  import "./NCard.css";
+  import "./NNotification.css";
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
@@ -12,27 +12,23 @@
   }
 
   export default defineComponent({
-    name: "NCard",
+    name: "NNotification",
     components: {
       NButton,
     },
     props: {
-      title: {
+      message: {
         type: String,
         required: true,
       },
-      subtitle: {
+      time: {
         type: String,
-        default: '',
-      },
-      content: {
-        type: String,
-        default: '',
+        required: true,
       },
       actionButtons: {
         type: Array as () => ActionButton[],
-        default: () => [],
-      },
+        default: () => [],        
+      }
     },
     setup(props) {
       return {};
@@ -41,14 +37,11 @@
 </script>
 
 <template>
-  <div class="n-card">
-    <h2 class="n-card__title">{{ title }}</h2>
-    <h6 class="n-card__subtitle">{{ subtitle }}</h6>
+  <div class="n-notification">
+    <p class="n-notification__message" v-html="message"></p>
+    <p class="n-notification__time">{{ time }}</p>
 
-    <p v-if="content">{{ content }}</p>
-    <slot v-else name="content"></slot>
-
-    <div v-if="actionButtons.length > 0" class="n-card__actions">
+    <div v-if="actionButtons.length > 0" class="n-notification__actions">
       <n-button
         v-for="(button, index) in actionButtons"
         :key="index"
@@ -58,6 +51,5 @@
         :size="button.size"
       />
     </div>
-    <slot v-else name="actions"></slot>
   </div>
 </template>

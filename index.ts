@@ -9,6 +9,8 @@ import NRow from './src/stories/NRow/NRow.vue';
 import NHeroSection from './src/stories/NHeroSection/NHeroSection.vue';
 import NTextInput from './src/stories/NTextInput/NTextInput.vue';
 import NPaint from './src/stories/NPaint/NPaint.vue';
+import NTimeline from './src/stories/NTimeline/NTimeline.vue';
+import NNotificationList from './src/stories/NNotificationList/NNotificationList.vue';
 import '@mdi/font/css/materialdesignicons.css';
 
 // Define the plugin as a plain Plugin, no generics
@@ -24,6 +26,8 @@ const NovaUI: Plugin = {
     app.component('NNavigationBar', NNavigationBar);
     app.component('NDropdown', NDropdown);
     app.component('NOrderList', NOrderList);
+    app.component('NTimeline', NTimeline);
+    app.component('NNotificationList', NNotificationList);
   }
 };
 

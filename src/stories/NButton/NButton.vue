@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, computed, inject } from 'vue';
-import './n-button.css';
+import '@/assets/shared.css';
+import './NButton.css';
 
 export default defineComponent({
   name: 'NButton',
@@ -29,10 +30,10 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { emit }) {
     const classes = computed(() => ({
-      'storybook-button': true,
-      'storybook-button--primary': props.primary,
-      'storybook-button--secondary': !props.primary,
-      [`storybook-button--${props.size}`]: true,
+      'n-button': true,
+      'n-button--primary': props.primary,
+      'n-button--secondary': !props.primary,
+      [`n-button--${props.size}`]: true,
     }));
 
     const styles = computed(() => {

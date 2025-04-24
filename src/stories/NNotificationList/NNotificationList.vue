@@ -1,5 +1,6 @@
 <script lang="ts">
   import { defineComponent, defineAsyncComponent } from 'vue';
+  import '@/assets/shared.css';
   import "./NNotificationList.css";
 
   const NNotification = defineAsyncComponent(() => import('../NNotification/NNotification.vue'));

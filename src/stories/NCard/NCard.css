@@ -16,7 +16,8 @@
 .n-card__subtitle {
   font-size: 1rem;
   margin: 0;
-  color: rgb(92, 92, 92);
+  color: rgb(134, 134, 134);
+  font-weight: 100;
 }
 
 .n-card__content {

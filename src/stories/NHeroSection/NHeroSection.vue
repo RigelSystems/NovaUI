@@ -1,7 +1,7 @@
 <script lang="ts">
   import { defineComponent, computed, inject, defineAsyncComponent } from 'vue';
   import "./NHeroSection.css";
-  import '@/assets/shared.css';
+  
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 

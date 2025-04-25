@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, watch, PropType, inject, ref, useSlots } from 'vue';
-import '@/assets/shared.css';
+
 
 // how to assign these as options?
 interface ColBreakpoints {

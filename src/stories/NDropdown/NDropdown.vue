@@ -1,7 +1,7 @@
 <script lang="ts">
 import "./NDropdown.css";
 import { defineComponent, ref, computed } from 'vue';
-import '@/assets/shared.css';
+
 
 export default defineComponent({
   name: "NDropdown",

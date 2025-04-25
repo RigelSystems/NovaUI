@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, ref, watch, defineAsyncComponent } from 'vue';
-import '@/assets/shared.css';
+
 
 const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 

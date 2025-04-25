@@ -1,6 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, inject, defineAsyncComponent } from 'vue';
-  import '@/assets/shared.css';
+  
   import "./Preview.css";
 
   const NHeroSection = defineAsyncComponent(() => import('../NHeroSection/NHeroSection.vue'));

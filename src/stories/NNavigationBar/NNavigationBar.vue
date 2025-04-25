@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import './NNavigationBar.css';
-import '@/assets/shared.css';
+
 
 interface NavigationLink {
   label: string;

@@ -68,7 +68,7 @@ VUE_TEMPLATE =
   <<~VUE
   <script lang="ts">
     import { defineComponent, computed, inject } from 'vue';
-    import '@/assets/shared.css';
+    
     import "./#{name}.css";
 
     export default defineComponent({

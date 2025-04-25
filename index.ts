@@ -12,6 +12,7 @@ import NPaint from './src/stories/NPaint/NPaint.vue';
 import NTimeline from './src/stories/NTimeline/NTimeline.vue';
 import NNotificationList from './src/stories/NNotificationList/NNotificationList.vue';
 import '@mdi/font/css/materialdesignicons.css';
+import '@/assets/shared.css';
 
 // Define the plugin as a plain Plugin, no generics
 const NovaUI: Plugin = {

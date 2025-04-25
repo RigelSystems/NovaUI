@@ -1,4 +1,4 @@
-import l from"./NDropdown-Cy3KRy30.js";import"./vue.esm-bundler-BiSJ2HAR.js";/* empty css               */import"./_plugin-vue_export-helper-DlAUqK2U.js";const w={title:"Components/NDropdown",component:l,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},e={render:c=>({components:{NDropdown:l},setup(){return{args:c}},template:`<NDropdown>
+import l from"./NDropdown-fbVXmQgh.js";import"./vue.esm-bundler-BiSJ2HAR.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const u={title:"Components/NDropdown",component:l,tags:["autodocs"],argTypes:{label:{control:"text"}},args:{label:"Toggle Dropdown"}},e={render:c=>({components:{NDropdown:l},setup(){return{args:c}},template:`<NDropdown>
           <template #label>
             <button>Click Me</button>
           </template>
@@ -55,4 +55,4 @@ import l from"./NDropdown-Cy3KRy30.js";import"./vue.esm-bundler-BiSJ2HAR.js";/* 
     content: 'Some great content here!!',
     chevron: true
   }
-}`,...(s=(a=t.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};const b=["WithSlots","WithProps"];export{t as WithProps,e as WithSlots,b as __namedExportsOrder,w as default};
+}`,...(s=(a=t.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};const w=["WithSlots","WithProps"];export{t as WithProps,e as WithSlots,w as __namedExportsOrder,u as default};

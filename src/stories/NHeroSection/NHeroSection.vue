@@ -47,6 +47,7 @@
           v-for="(button, index) in actionButtons"
           :key="index"
           :label="button.label"
+          @click="button.onClick"
         />
       </div>
     </div>

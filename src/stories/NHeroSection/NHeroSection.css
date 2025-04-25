@@ -18,7 +18,9 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    font-size: 0.8rem;
 }
+
 .n-hero-section__actions {
     display: flex;
     justify-content: center;

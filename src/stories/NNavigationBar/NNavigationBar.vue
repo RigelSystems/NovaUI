@@ -89,8 +89,8 @@ export default defineComponent({
     <ul>
       <li v-for="link in mobileBottomLinks" :key="link.url" :class="{ 'n-navigation-bar__mobile-bottom--active': currentPath === link.url }">
         <a :href="link.url">
-          <span class="label" v-if="link.label">{{ link.label }}</span>
           <span :class="['mdi', link.icon]" v-if="link.icon"></span>
+          <span class="label" v-if="link.label">{{ link.label }}</span>
           </a>
         </li>
       </ul>

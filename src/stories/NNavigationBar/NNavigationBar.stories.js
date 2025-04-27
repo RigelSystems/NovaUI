@@ -8,6 +8,7 @@ export default {
   argTypes: {
     links: { control: { type: 'array' } },
     mobileBottomLinks: { control: { type: 'array' } },
+    showMobileBottomLinks: { control: { type: 'boolean' } },
   },
   args: {
     links: [
@@ -16,11 +17,12 @@ export default {
       { label: 'Contact', url: '/contact' },
     ],
     mobileBottomLinks: [
-      { url: '/home', icon: 'mdi-home-account' },
-      { url: '/about', icon: 'mdi-information' },
-      { url: '/contact', icon: 'mdi-email' },
+      { url: '/home', icon: 'mdi-home-account', label: 'Home' },
+      { url: '/about', icon: 'mdi-information', label: 'About' },
+      { url: '/contact', icon: 'mdi-email', label: 'Contact' },
     ],
-    currentPath: '/home'
+    currentPath: '/home',
+    showMobileBottomLinks: true,
   },
   parameters: {
     docs: {

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, onMounted, watch, onBeforeUnmount } from 'vue';
 import './NNavigationBar.css';
 
 
@@ -31,6 +31,26 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const applyBodyPadding = (padding: boolean) => {
+      if (padding) {
+        document.body.style.paddingBottom = '6rem';
+      } else {
+        document.body.style.paddingBottom = '';
+      }
+    };
+
+    onMounted(() => {
+      applyBodyPadding(props.showMobileBottomLinks);
+    });
+
+    watch(() => props.showMobileBottomLinks, (newVal) => {
+      applyBodyPadding(newVal);
+    });
+
+    onBeforeUnmount(() => {
+      document.body.style.paddingBottom = '';
+    });
+
     const isOpen = ref(false);
     const visibleLinks = computed(() =>
       props.links.filter(link => link.visible !== false)
@@ -96,3 +116,9 @@ export default defineComponent({
       </ul>
     </div>
 </template>
+
+<style>
+body {
+  padding-bottom: 5rem;
+}
+</style>

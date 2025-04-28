@@ -38,6 +38,10 @@ export default defineComponent({
       type: Object as PropType<Record<string, any>>,
       default: () => ({}),
     },
+    accessToken: {
+      type: String,
+      default: '',
+    },
   },
   setup(props) {
     const loading = ref(true);
@@ -52,6 +56,9 @@ export default defineComponent({
           method: props.method,
           data: props.method.toLowerCase() === 'post' ? props.params : undefined,
           params: props.method.toLowerCase() === 'get' ? props.params : undefined,
+          headers: props.accessToken
+            ? { Authorization: `Bearer ${props.accessToken}` }
+            : undefined,
         });
 
         headers.value = response.data.headers;

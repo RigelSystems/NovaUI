@@ -1,0 +1,115 @@
+/* === Trigger button === */
+.n-modal__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    background: #2563eb; /* indigo-600 */
+    color: #fff;
+    border: none;
+    border-radius: 0.375rem; /* rounded-md */
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .n-modal__trigger:hover {
+    background: #1d4ed8; /* indigo-700 */
+  }
+  
+  .n-modal__trigger:focus {
+    outline: 2px solid #93c5fd; /* indigo-300 */
+    outline-offset: 2px;
+  }
+  
+  /* === Overlay === */
+  .n-modal__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* === Modal container === */
+  .n-modal {
+    background: #fff;
+    width: 90%;
+    max-width: 32rem; /* 512px */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: scale-in 0.2s ease;
+  }
+  
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* === Header === */
+  .n-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+  
+  .n-modal__title {
+    margin: 0;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: #111827; /* gray-900 */
+  }
+  
+  .n-modal__close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #6b7280; /* gray-500 */
+    transition: color 0.2s ease;
+  }
+  
+  .n-modal__close:hover {
+    color: #111827; /* gray-900 */
+  }
+  
+  /* === Body === */
+  .n-modal__body {
+    padding: 1.5rem;
+    padding-top: 0;
+    color: #374151; /* gray-700 */
+  }
+  
+  /* === Footer (optional) === */
+  .n-modal__footer {
+    padding: 1rem 1.5rem;
+    background: #f9fafb; /* gray-50 */
+  }
+  
+  /* === Transition classes for fade === */
+  .n-modal-fade-enter-from,
+  .n-modal-fade-leave-to {
+    opacity: 0;
+  }
+  
+  .n-modal-fade-enter-active,
+  .n-modal-fade-leave-active {
+    transition: opacity 0.2s ease;
+  }
+  
+  .n-modal-fade-enter-to,
+  .n-modal-fade-leave-from {
+    opacity: 1;
+  }
+  

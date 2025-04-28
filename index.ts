@@ -11,6 +11,8 @@ import NTextInput from './src/stories/NTextInput/NTextInput.vue';
 import NPaint from './src/stories/NPaint/NPaint.vue';
 import NTimeline from './src/stories/NTimeline/NTimeline.vue';
 import NNotificationList from './src/stories/NNotificationList/NNotificationList.vue';
+import NModal from './src/stories/NModal/NModal.vue';
+import NColourPicker from './src/stories/NColourPicker/NColourPicker.vue';
 import '@mdi/font/css/materialdesignicons.css';
 import './src/assets/shared.css';
 
@@ -29,6 +31,8 @@ const NovaUI: Plugin = {
     app.component('NOrderList', NOrderList);
     app.component('NTimeline', NTimeline);
     app.component('NNotificationList', NNotificationList);
+    app.component('NModal', NModal);
+    app.component('NColourPicker', NColourPicker);
   }
 };
 

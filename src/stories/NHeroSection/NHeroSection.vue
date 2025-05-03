@@ -8,6 +8,7 @@
   interface ActionButton {
     label: string;
     href: string;
+    onClick: () => void;
   }
 
   export default defineComponent({
@@ -29,6 +30,13 @@
         type: Array as () => ActionButton[],
         default: () => [],
       },
+      layout: {
+        validator: (value: string) => {
+          return ['left', 'right', 'center'].includes(value);
+        },
+        type: String,
+        default: 'center',
+      },
     },
     setup(props) {
       return {};
@@ -37,7 +45,7 @@
 </script>
 
 <template>
-  <div :class="`n-hero-section ${$slots.image ? 'n-hero-section--with-image' : ''}`">
+  <div :class="`n-hero-section n-hero-section-${layout}`">
     <div class="n-hero-section__textarea">
       <h1 class="n-hero-section__title">{{ title }}</h1>
       <h2 class="n-hero-section__subtitle">{{ subtitle }}</h2>

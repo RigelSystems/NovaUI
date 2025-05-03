@@ -23,6 +23,11 @@ const config = {
     ${head}
     <link rel="icon" href="/favicon.png">
   `,
+  previewHead: (head) => `
+    ${head}
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="./src/assets/shared.css" />
+  `,
 };
 
 export default config;

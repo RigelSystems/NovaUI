@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent, defineAsyncComponent } from 'vue';
   import "./NCard.css";
-  
 
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
@@ -42,7 +41,7 @@
 </script>
 
 <template>
-  <div class="n-card">
+  <div class="n-card n-container-style">
     <h2 class="n-card__title">{{ title }}</h2>
     <h6 class="n-card__subtitle">{{ subtitle }}</h6>
 

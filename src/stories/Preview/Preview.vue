@@ -10,6 +10,7 @@
   const NNavigationBar = defineAsyncComponent(() => import('../NNavigationBar/NNavigationBar.vue'));
   const NTextInput = defineAsyncComponent(() => import('../NTextInput/NTextInput.vue'));
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
+  const NDashboardTile = defineAsyncComponent(() => import('../NDashboardTile/NDashboardTile.vue'));
 
   interface Link {
     label: string;
@@ -26,6 +27,7 @@
       NDropdown,
       NTextInput,
       NButton,
+      NDashboardTile,
     },
     props: {
       label: {
@@ -50,6 +52,8 @@
   <div class="preview">
     <NNavigationBar :links="links"/>
 
+    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
+    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
     <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
 
     <NRow :cols="{sm: [100], md: [60,40,40,60], lg: [33.33,33.33,33.33]}" title="Row Title" subtitle="Row Subtitle" :style="{background: '#f5f5f5', padding: '1rem'}">
@@ -83,5 +87,37 @@
       <NTextInput label="Message" placeholder="Enter your message here" />
       <NButton label="Submit" />
     </NRow>
+
+    <NRow :cols="{sm: [100], md: [50,50,100,100]}">
+      <NDashboardTile
+        :title="'Tile 1'"
+        :value="'value 1'"
+        :icon="'mdi-home'"
+        :bottomText="'Bottom Text 1'"
+        :style="{background: '#fff', padding: '1rem', borderRadius: '8px'}"
+      ></NDashboardTile>
+      <NDashboardTile
+        :title="'Tile 1'"
+        :value="'value 1'"
+        :icon="'mdi-home'"
+        :bottomText="'Bottom Text 1'"
+        :style="{background: '#fff', padding: '1rem', borderRadius: '8px'}"
+      ></NDashboardTile>
+      <NDashboardTile
+        :title="'Tile 1'"
+        :value="'value 1'"
+        :icon="'mdi-home'"
+        :bottomText="'Bottom Text 1'"
+        :style="{background: '#fff', padding: '1rem', borderRadius: '8px'}"
+      ></NDashboardTile>
+      <NDashboardTile
+        :title="'Tile 1'"
+        :value="'value 1'"
+        :icon="'mdi-home'"
+        :bottomText="'Bottom Text 1'"
+        :style="{background: '#fff', padding: '1rem', borderRadius: '8px'}"
+      ></NDashboardTile>
+    </NRow>
+
   </div>
 </template>

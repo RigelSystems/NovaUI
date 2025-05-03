@@ -1,11 +1,13 @@
 .n-hero-section {
+    margin: auto;
+    max-width: 1000px;
     height: 100vh;
-    max-height: 500px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 3rem;
 }
 
 .n-hero-section--with-image {
@@ -16,9 +18,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .n-hero-section__actions {
@@ -42,6 +43,78 @@
     margin-top: 0.5rem;
     font-size: 1.3rem;
     margin-bottom: 2rem;
-    color: rgb(134, 134, 134);
+    color: var(--theme-color, #007bff) !important;
     font-weight: 100;
+}
+
+.n-hero-section-left {
+    display: flex;
+}
+
+.n-hero-section__image {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+.n-hero-section-left .n-hero-section__image {
+    order: -1;
+}
+
+.n-hero-section-right .n-hero-section__image {
+    order: -1;
+}
+
+@media (min-width: 768px) {
+    .n-hero-section {
+        max-height: 500px;
+    }
+    .n-hero-section__image {
+        display: flex;
+        width: 50%;
+    }
+
+    .n-hero-section__textarea {
+        width: 50%;
+    }
+
+    .n-hero-section {
+        flex-direction: row;
+    }
+
+    .n-hero-section-left .n-hero-section__image {
+        order: -1;
+    }
+
+    .n-hero-section-left .n-hero-section__title,
+    .n-hero-section-left .n-hero-section__subtitle,
+    .n-hero-section-left .n-hero-section__content {
+        text-align: left;
+    }
+
+    .n-hero-section-left .n-hero-section__actions {
+        justify-content: flex-start;
+    }
+
+    .n-hero-section-left .n-hero-section__image {
+        justify-content: flex-end;
+    }
+
+    .n-hero-section-right .n-hero-section__image {
+        order: 2;
+    }
+
+    .n-hero-section-right .n-hero-section__title,
+    .n-hero-section-right .n-hero-section__subtitle,
+    .n-hero-section-right .n-hero-section__content {
+        text-align: right;
+    }
+    .n-hero-section-right .n-hero-section__actions {
+        justify-content: flex-end;
+    }
+
+    .n-hero-section-right .n-hero-section__image {
+        justify-content: flex-start;
+    }
 }

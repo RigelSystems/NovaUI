@@ -10,9 +10,7 @@
       </thead>
       <tbody>
         <tr v-for="(row, rowIndex) in data" :key="rowIndex">
-          <td v-for="header in headers" :key="header">
-            {{ row[header] }}
-          </td>
+          <td v-for="header in headers" :key="header" v-html="row[header]"></td>
         </tr>
       </tbody>
     </table>

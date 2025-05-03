@@ -33,7 +33,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="n-dropdown">
+  <div class="n-dropdown n-container-style">
     <div @click="toggleDropdown" class="n-dropdown__header">
       <span class="mdi mdi-chevron-up" :class="['n-dropdown__caret', {'n-dropdown__caret--open': isOpen}]" v-if="chevron"></span>
       <p class="n-dropdown__header-text" v-if="$props.label">{{ $props.label }}</p>

@@ -1,6 +1,6 @@
 <template>
-  <div class="n-dashboard-tile">
-    <div class="n-dashboard-tile__icon">
+  <div class="n-dashboard-tile n-container-style">
+    <div class="n-dashboard-tile__icon" :style="style">
       <span :class="['mdi', icon]"></span>
     </div>
 
@@ -34,6 +34,30 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    colour: {
+      type: String,
+      default: '#3b82f6',
+    },
+  },
+  setup(props) {
+    const shadeLighterColour = (color => {
+      const colorValue = parseInt(color.replace('#', ''), 16);
+      const reduction = 100;
+      const r = (colorValue >> 16) - reduction
+      const g = ((colorValue >> 8) & 0x00FF) - reduction;
+      const b = (colorValue & 0x0000FF) - reduction;
+
+      return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+    });
+
+    const style = {
+      backgroundColor: props.colour,
+      color: shadeLighterColour(props.colour),
+    };
+
+    return {
+      style,
+    };
   },
 });
 </script>
@@ -42,10 +66,6 @@ export default defineComponent({
 .n-dashboard-tile {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  background: #fff;
-  border-radius: 1rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   gap: 1rem;
 }
 

@@ -1,0 +1,38 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./NButton-CKXbNP-J.js","./vue.esm-bundler-B7Tz_gfl.js","./_plugin-vue_export-helper-DlAUqK2U.js","./NButton-BwYMFhjk.css"])))=>i.map(i=>d[i]);
+import{_ as M}from"./iframe-Ba5HEGk7.js";import{d as y,s as N,g as v,k,p as C,o as n,b as l,z as p,y as S,A as T,l as o,t as D,e as c,f as m,T as $,F as B}from"./vue.esm-bundler-B7Tz_gfl.js";import{_ as L}from"./_plugin-vue_export-helper-DlAUqK2U.js";const O=k(()=>M(()=>import("./NButton-CKXbNP-J.js"),__vite__mapDeps([0,1,2,3]),import.meta.url)),_=y({name:"NModal",components:{NButton:O},props:{title:{type:String}},setup(e){const t=N(!1),r=()=>{t.value=!0},i=()=>{t.value=!1},d=v(()=>e.title);return{isOpen:t,openModal:r,closeModal:i,title:d}}}),F={class:"n-modal n-container-style",role:"dialog","aria-modal":"true"},w={class:"n-modal__header"},x={class:"n-modal__title"},A={class:"n-modal__body"},E={key:0,class:"n-modal__footer"};function I(e,t,r,i,d,U){const h=C("NButton");return n(),l(B,null,[p(h,{label:"Open Modal",class:"n-modal__trigger",onClick:e.openModal},null,8,["onClick"]),p($,{name:"n-modal-fade"},{default:S(()=>[e.isOpen?(n(),l("div",{key:0,class:"n-modal__overlay",onClick:t[1]||(t[1]=T((...s)=>e.closeModal&&e.closeModal(...s),["self"]))},[o("div",F,[o("header",w,[o("h2",x,D(e.title),1),o("button",{class:"n-modal__close",onClick:t[0]||(t[0]=(...s)=>e.closeModal&&e.closeModal(...s)),"aria-label":"Close"},"×")]),o("section",A,[c(e.$slots,"default")]),e.$slots.footer?(n(),l("footer",E,[c(e.$slots,"footer")])):m("",!0)])])):m("",!0)]),_:3})],64)}const b=L(_,[["render",I]]);_.__docgenInfo={displayName:"NModal",exportName:"default",description:"",tags:{},props:[{name:"title",type:{name:"string"}}],slots:[{name:"default"},{name:"footer"}],sourceFiles:["/home/runner/work/NovaUI/NovaUI/src/stories/NModal/NModal.vue"]};const Y={title:"Components/NModal",component:b,tags:["autodocs"],argTypes:{title:{control:{type:"text"},description:"Title text displayed in the modal header"},triggerLabel:{control:{type:"text"},description:"Label for the button that triggers the modal (trigger slot)",table:{category:"Slots"}}},args:{title:"Modal Title",triggerLabel:"Open Modal"},parameters:{docs:{description:{component:"A description of the NModal component with default, trigger and footer slots."}}}},a=e=>({components:{NModal:b},setup(){return{args:e}},template:`
+    <!-- Using trigger slot to customize the button text -->
+    <NModal v-bind="args">
+      <template #trigger>{{ args.triggerLabel }}</template>
+
+      <!-- Default slot (body) -->
+      <p>This is some example body content inside the default slot. You can use any markup here.</p>
+
+      <!-- Footer slot -->
+      <template #footer>
+        <button class="n-modal__trigger" @click="alert('Save clicked!')">Save</button>
+      </template>
+    </NModal>
+  `});var u,g,f;a.parameters={...a.parameters,docs:{...(u=a.parameters)==null?void 0:u.docs,source:{originalSource:`args => ({
+  components: {
+    NModal
+  },
+  setup() {
+    return {
+      args
+    };
+  },
+  template: \`
+    <!-- Using trigger slot to customize the button text -->
+    <NModal v-bind="args">
+      <template #trigger>{{ args.triggerLabel }}</template>
+
+      <!-- Default slot (body) -->
+      <p>This is some example body content inside the default slot. You can use any markup here.</p>
+
+      <!-- Footer slot -->
+      <template #footer>
+        <button class="n-modal__trigger" @click="alert('Save clicked!')">Save</button>
+      </template>
+    </NModal>
+  \`
+})`,...(f=(g=a.parameters)==null?void 0:g.docs)==null?void 0:f.source}}};const R=["Default"];export{a as Default,R as __namedExportsOrder,Y as default};

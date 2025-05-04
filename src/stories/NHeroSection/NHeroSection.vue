@@ -56,6 +56,7 @@
           :key="index"
           :label="button.label"
           @click="button.onClick"
+          :href="button.href"
         />
       </div>
     </div>

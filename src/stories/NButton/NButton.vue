@@ -61,12 +61,21 @@ export default defineComponent({
 
 <template>
   <button
+    v-if="!href"
     type="button"
     :class="classes"
     @click="onClick"
     :style="styles"
-    :href="href"
   >
     {{ label }}
   </button>
+  <a
+    v-else
+    :href="href"
+    :class="classes"
+    @click="onClick"
+    :style="styles"
+  >
+    {{ label }}
+  </a>
 </template>

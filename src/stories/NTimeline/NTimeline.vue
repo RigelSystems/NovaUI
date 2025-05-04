@@ -1,7 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, ref, onMounted, onUnmounted } from 'vue';
-  import dayjs from 'dayjs';
-  
+  import * as dayjs from 'dayjs';  
   import "./NTimeline.css";
 
   interface TimelineItem {

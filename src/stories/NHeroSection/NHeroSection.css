@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 3rem;
+    gap: 1rem;
 }
 
 .n-hero-section--with-image {
@@ -20,6 +20,7 @@
     justify-content: center;
     gap: 1rem;
     font-size: 0.9rem;
+    padding: 0 1rem;
 }
 
 .n-hero-section__actions {
@@ -67,6 +68,14 @@
 }
 
 @media (min-width: 768px) {
+    .n-hero-section__content {
+        padding: 0;
+    }
+
+    .n-hero-section {
+        gap: 2rem;
+    }
+
     .n-hero-section {
         max-height: 500px;
     }

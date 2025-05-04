@@ -1,0 +1,41 @@
+.home-arrow-container {
+    display:flex;
+    justify-content: center;
+    height:60px;
+}
+
+.home-arrow-wrapper {
+	display:inline-block;
+    width:20px;
+    margin-bottom:25px;
+}
+
+.arrow-top {
+	width:10px;
+	height:10px;
+	border-right:solid 2px;
+	border-bottom:solid 2px;
+	transform:rotate(45deg);
+
+}
+
+.arrow-mid {
+	width:10px;
+	height:10px;
+	border-right:solid 2px;
+	border-bottom:solid 2px;
+	transform:rotate(45deg);
+
+	animation-delay: 0.5s; 
+}
+
+.arrow-bottom {
+	width:10px;
+	height:10px;
+	border-right:solid 2px;
+	border-bottom:solid 2px;
+	transform:rotate(45deg);
+
+	animation-delay: 1s; 
+}
+

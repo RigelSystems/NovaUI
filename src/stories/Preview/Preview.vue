@@ -11,6 +11,7 @@
   const NTextInput = defineAsyncComponent(() => import('../NTextInput/NTextInput.vue'));
   const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
   const NDashboardTile = defineAsyncComponent(() => import('../NDashboardTile/NDashboardTile.vue'));
+  const NScrollArrow = defineAsyncComponent(() => import('../NScrollArrow/NScrollArrow.vue'));
 
   interface Link {
     label: string;
@@ -28,6 +29,7 @@
       NTextInput,
       NButton,
       NDashboardTile,
+      NScrollArrow,
     },
     props: {
       label: {
@@ -53,8 +55,19 @@
     <NNavigationBar :links="links"/>
 
     <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
-    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
-    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
+
+    <NScrollArrow />
+
+    <NHeroSection layout="left" title="Hero Section Title" subtitle="A testing banana" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]">
+      <template #image>
+        <img src="./banana.avif" alt="Placeholder Image" class="n-hero-image"/>
+      </template>
+    </NHeroSection>
+    <NHeroSection layout="right" title="Hero Section Title" subtitle="A testing apple" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]">
+      <template #image>
+        <img src="./apple.avif" alt="Placeholder Image" class="n-hero-image" />
+      </template>
+    </NHeroSection>
 
     <NRow :cols="{sm: [100], md: [60,40,40,60], lg: [33.33,33.33,33.33]}" title="Row Title" subtitle="Row Subtitle" :style="{background: '#f5f5f5', padding: '1rem'}">
       <NCard title="Card Title" subtitle="Card Subtitle" content="Some example text for this card" :actionButtons="[{label: 'Action Button', href: '/home', primary: true}, {label: 'Action Button', href: '/home', primary: false}]" />
@@ -121,3 +134,10 @@
 
   </div>
 </template>
+
+<style scoped>
+.n-hero-image {
+  width: 100%;
+  object-fit: cover;
+}
+</style>

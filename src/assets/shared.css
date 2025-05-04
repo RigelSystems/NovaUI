@@ -15,10 +15,52 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .n-container-style {
-  border: solid #e8e8e8 1px;
+  border: solid #c0c0c0 1px;
   padding: 1rem;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* colors.css */
+
+/* Primary Colors */
+.n-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.n-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.n-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.n-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.n-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.n-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.n-light {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.n-dark {
+  background-color: #343a40;
+  color: #fff;
+}

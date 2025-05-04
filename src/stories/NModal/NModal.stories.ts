@@ -3,7 +3,7 @@ import NModal from "./NModal.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof NModal> = {
-  title: "NModal",
+  title: "Components/NModal",
   component: NModal,
   tags: ["autodocs"],
   argTypes: {

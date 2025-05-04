@@ -2,7 +2,7 @@ import NNotification from "./NNotification.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "NNotification",
+  title: "Social/Notifications/NNotification",
   component: NNotification,
   tags: ['autodocs'],
   argTypes: {

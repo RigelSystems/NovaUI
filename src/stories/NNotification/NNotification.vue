@@ -38,7 +38,7 @@
 </script>
 
 <template>
-  <div class="n-notification">
+  <div class="n-notification n-container-style">
     <p class="n-notification__message" v-html="message"></p>
     <p class="n-notification__time">{{ time }}</p>
 

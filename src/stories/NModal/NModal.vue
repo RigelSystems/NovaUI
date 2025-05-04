@@ -1,9 +1,14 @@
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, defineAsyncComponent} from 'vue';
 import './NModal.css';
+
+const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
 
 export default defineComponent({
   name: 'NModal',
+  components: {
+    NButton,
+  },
   props: {
     title: {
       type: String,
@@ -34,14 +39,15 @@ export default defineComponent({
 
 <template>
   <!-- Trigger button -->
-  <button class="n-modal__trigger" @click="openModal">
-    <slot name="trigger">Open Modal</slot>
-  </button>
+  <NButton 
+    label="Open Modal"
+    class="n-modal__trigger" @click="openModal">
+  </NButton>
 
   <!-- Overlay & Modal content -->
   <transition name="n-modal-fade">
     <div v-if="isOpen" class="n-modal__overlay" @click.self="closeModal">
-      <div class="n-modal" role="dialog" aria-modal="true">
+      <div class="n-modal n-container-style" role="dialog" aria-modal="true">
         <!-- Header -->
         <header class="n-modal__header">
           <h2 class="n-modal__title">{{ title }}</h2>

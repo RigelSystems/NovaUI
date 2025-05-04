@@ -39,7 +39,7 @@ export default {
 }
 
 export const Default = {
-  render (args) {
+  render(args) {
     return {
       components: { NNavigationBar },
       setup() {
@@ -47,7 +47,14 @@ export const Default = {
       },
       template: `
         <div style="height: 400px;">
-          <NNavigationBar v-bind="args" />
+          <NNavigationBar v-bind="args">
+            <template #image>
+              <img src="/favicon.png" alt="Profile" style="width: 50px;" />
+            </template>
+                <template #user>
+              <img src="/favicon.png" alt="Profile" style="width: 50px;" />
+            </template>
+          </NNavigationBar>
         </div>
       `,
     };

@@ -78,13 +78,19 @@ export default defineComponent({
 </script>
 
 <template>
-  <nav class="n-navigation-bar">
+  <nav class="n-navigation-bar n-container-style">
     <!-- Desktop Nav -->
+    <div class="image-slot">
+      <slot name="image" v-if="$slots.image"></slot>
+    </div>
     <ul class="n-navigation-bar__desktop-nav">
       <li v-for="link in visibleLinks" :key="link.url" :class="{ 'n-navigation-bar__desktop--active': currentPath === link.url }">
         <a :href="link.url">{{ link.label }}</a>
       </li>
     </ul>
+    <div>
+      <slot name="user" v-if="$slots.user"></slot>
+    </div>
 
     <!-- Mobile Menu Button -->
     <button class="menu-button" @click="toggleSidebar">☰</button>
@@ -105,7 +111,7 @@ export default defineComponent({
     <div v-if="isOpen" class="overlay" @click="toggleSidebar"></div>
   </nav>
   
-  <div class="n-navigation-bar__bottom-nav" v-if="mobileBottomLinks.length > 0 && showMobileBottomLinks">
+  <div class="n-navigation-bar__bottom-nav n-container-style" v-if="mobileBottomLinks.length > 0 && showMobileBottomLinks">
     <ul>
       <li v-for="link in mobileBottomLinks" :key="link.url" :class="{ 'n-navigation-bar__mobile-bottom--active': currentPath === link.url }">
         <a :href="link.url">

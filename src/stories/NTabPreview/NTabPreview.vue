@@ -1,5 +1,6 @@
 <template>
   <n-tabs>
+    <!-- header / buttons -->
     <template #tabs="{ activeTab, setActiveTab }">
       <n-tab
         label="Overview"
@@ -13,28 +14,27 @@
       />
     </template>
 
-    <n-tab-panel :index="0" :activeTab="activeTab">
-      <p>This is the Overview content.</p>
-    </n-tab-panel>
-    <n-tab-panel :index="1" :activeTab="activeTab">
-      <p>This is the Details content.</p>
-    </n-tab-panel>
+    <!-- body / panels -->
+    <template #default="{ activeTab }">
+      <n-tab-panel :index="0" :activeTab="activeTab">
+        <p>This is the Overview content.</p>
+      </n-tab-panel>
+      <n-tab-panel :index="1" :activeTab="activeTab">
+        <p>This is the Details content.</p>
+      </n-tab-panel>
+    </template>
   </n-tabs>
 </template>
 
 <script lang="ts">
-import { defineComponent, defineAsyncComponent } from 'vue';
+import { defineComponent } from 'vue';
 
-const NTabs = defineAsyncComponent(() => import('../NTabs/NTabs.vue'));
-const NTab = defineAsyncComponent(() => import('../NTab/NTab.vue'));
-const NTabPanel = defineAsyncComponent(() => import('../NTabPanel/NTabPanel.vue'));
+import NTabs from '../NTabs/NTabs.vue';
+import NTab from '../NTab/NTab.vue';
+import NTabPanel from '../NTabPanel/NTabPanel.vue';
 
 export default defineComponent({
   name: 'NTabPreview',
-  components: {
-    NTabs,
-    NTab,
-    NTabPanel,
-  },
+  components: { NTabs, NTab, NTabPanel },
 });
 </script>

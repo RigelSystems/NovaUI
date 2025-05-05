@@ -80,15 +80,15 @@ export default defineComponent({
 <template>
   <nav class="n-navigation-bar n-container-style">
     <!-- Desktop Nav -->
-    <div class="image-slot">
-      <slot name="image" v-if="$slots.image"></slot>
+    <div class="logo-slot">
+      <slot name="logo" v-if="$slots.logo"></slot>
     </div>
     <ul class="n-navigation-bar__desktop-nav">
       <li v-for="link in visibleLinks" :key="link.url" :class="{ 'n-navigation-bar__desktop--active': currentPath === link.url }">
         <a :href="link.url">{{ link.label }}</a>
       </li>
     </ul>
-    <div>
+    <div class="user-slot">
       <slot name="user" v-if="$slots.user"></slot>
     </div>
 
@@ -125,6 +125,7 @@ export default defineComponent({
 
 <style>
 body {
+  padding-top: 60px;
   padding-bottom: 5rem;
 }
 </style>

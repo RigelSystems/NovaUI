@@ -64,3 +64,89 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #343a40;
   color: #fff;
 }
+
+/* layout classes */
+
+.standard-container-1 {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.standard-container-2 {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.standard-container-3 {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.standard-container-4 {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.standard-container-2 > div {
+  width: 100%;
+}
+
+.standard-container-3 > div {
+  width: 100%;
+}
+
+.standard-container-4 > div {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .standard-container-2 {
+    flex-direction: row;
+  }
+
+  .standard-container-2 > div {
+    width: 48%;
+  }
+
+  .standard-container-3 {
+    flex-direction: row;
+  }
+
+  .standard-container-3 > div {
+    width: 48%;
+  }
+
+  .standard-container-4 {
+    flex-direction: row;
+  }
+
+  .standard-container-4 > div {
+    width: 48%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .standard-container-2 > div {
+    width: 48%;
+  }
+
+  .standard-container-3 > div {
+    width: 32%;
+  }
+
+  .standard-container-4 > div {
+    width: 23.5%;
+  }
+}

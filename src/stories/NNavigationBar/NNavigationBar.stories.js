@@ -48,7 +48,7 @@ export const Default = {
       template: `
         <div style="height: 400px;">
           <NNavigationBar v-bind="args">
-            <template #image>
+            <template #logo>
               <img src="/favicon.png" alt="Profile" style="width: 50px;" />
             </template>
                 <template #user>

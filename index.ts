@@ -16,6 +16,9 @@ import NColourPicker from './src/stories/NColourPicker/NColourPicker.vue';
 import NDashboardTile from './src/stories/NDashboardTile/NDashboardTile.vue';
 import NDataGrid from './src/stories/NDataGrid/NDataGrid.vue';
 import NScrollArrow from './src/stories/NScrollArrow/NScrollArrow.vue';
+import NTabs from './src/stories/NTabs/NTabs.vue';
+import NTab from './src/stories/NTab/NTab.vue';
+import NTabPanel from './src/stories/NTabPanel/NTabPanel.vue';
 import '@mdi/font/css/materialdesignicons.css';
 import './src/assets/shared.css';
 
@@ -39,6 +42,9 @@ const NovaUI: Plugin = {
     app.component('NDashboardTile', NDashboardTile);
     app.component('NDataGrid', NDataGrid);
     app.component('NScrollArrow', NScrollArrow);
+    app.component('NTabs', NTabs);
+    app.component('NTab', NTab);
+    app.component('NTabPanel', NTabPanel);
   }
 };
 

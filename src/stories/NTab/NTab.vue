@@ -36,8 +36,8 @@ export default defineComponent({
   color: #555;
 }
 .n-tab.active {
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
+  color: var(--theme-color, #007bff) !important;
+  border-bottom: 2px solid var(--theme-color, #007bff) !important;
   background-color: #fff;
 }
 </style>

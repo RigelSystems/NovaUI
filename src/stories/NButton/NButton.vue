@@ -14,7 +14,7 @@ export default defineComponent({
       default: true,
     },
     size: {
-      type: String as () => 'small' | 'medium' | 'large',
+      type: String as () => 'tiny' | 'small' | 'medium' | 'large',
       default: 'medium',
     },
     backgroundColor: {
@@ -68,6 +68,7 @@ export default defineComponent({
     :style="styles"
   >
     {{ label }}
+    <slot></slot>
   </button>
   <a
     v-else
@@ -77,5 +78,6 @@ export default defineComponent({
     :style="styles"
   >
     {{ label }}
+    <slot></slot>
   </a>
 </template>

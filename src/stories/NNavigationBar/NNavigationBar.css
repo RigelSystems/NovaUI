@@ -12,6 +12,7 @@
   border-top: none;
   border-left: none;
   border-right: none;
+  z-index: 1000;
 }
 
 .n-navigation-bar__desktop-nav {

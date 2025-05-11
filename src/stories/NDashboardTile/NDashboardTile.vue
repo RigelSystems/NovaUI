@@ -40,19 +40,24 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const shadeLighterColour = (color => {
-      const colorValue = parseInt(color.replace('#', ''), 16);
-      const reduction = 100;
-      const r = (colorValue >> 16) - reduction
-      const g = ((colorValue >> 8) & 0x00FF) - reduction;
-      const b = (colorValue & 0x0000FF) - reduction;
+    const shadeDarker = (hex) => {
+  const value = parseInt(hex.slice(1), 16);
+      let r = (value >> 16) & 0xff;
+      let g = (value >> 8)  & 0xff;
+      let b =  value        & 0xff;
 
-      return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
-    });
+      const factor = 0.60;           // 15 % darker
+      r = Math.max(0, Math.floor(r * (1 - factor)));
+      g = Math.max(0, Math.floor(g * (1 - factor)));
+      b = Math.max(0, Math.floor(b * (1 - factor)));
+
+      const darker = (r << 16) | (g << 8) | b;
+      return `#${darker.toString(16).padStart(6, '0')}`;
+    };
 
     const style = {
       backgroundColor: props.colour,
-      color: shadeLighterColour(props.colour),
+      color: shadeDarker(props.colour),
     };
 
     return {

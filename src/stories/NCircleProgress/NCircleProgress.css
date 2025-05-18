@@ -1,0 +1,23 @@
+.n-circle-progress {
+    display: inline-block;
+    user-select: none;
+  }
+  
+  /* Track ring */
+  .n-circle-progress__track {
+    fill: none;
+  }
+  
+  /* Progress arc */
+  .n-circle-progress__progress {
+    fill: none;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  /* Center text */
+  .n-circle-progress__text {
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+  }
+  

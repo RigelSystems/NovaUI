@@ -19,6 +19,7 @@ import NScrollArrow from './src/stories/NScrollArrow/NScrollArrow.vue';
 import NTabs from './src/stories/NTabs/NTabs.vue';
 import NTab from './src/stories/NTab/NTab.vue';
 import NTabPanel from './src/stories/NTabPanel/NTabPanel.vue';
+import NCircleProgress from './src/stories/NCircleProgress/NCircleProgress.vue';
 import '@mdi/font/css/materialdesignicons.css';
 import './src/assets/shared.css';
 
@@ -45,6 +46,7 @@ const NovaUI: Plugin = {
     app.component('NTabs', NTabs);
     app.component('NTab', NTab);
     app.component('NTabPanel', NTabPanel);
+    app.component('NCircleProgress', NCircleProgress);
   }
 };
 

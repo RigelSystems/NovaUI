@@ -13,6 +13,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    colour: {
+      type: String,
+      default: '',
+    },
     size: {
       type: String as () => 'tiny' | 'small' | 'medium' | 'large',
       default: 'medium',
@@ -33,6 +37,7 @@ export default defineComponent({
       'n-button--primary': props.primary,
       'n-button--secondary': !props.primary,
       [`n-button--${props.size}`]: true,
+      [`n-${props.colour}`]: props.colour,
     }));
 
     const styles = computed(() => {

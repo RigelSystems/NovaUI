@@ -1,88 +1,96 @@
-<script setup lang="ts">
-import { ref, computed, watch, onMounted, onBeforeUnmount, defineExpose, defineProps, defineEmits, defineAsyncComponent } from 'vue';
-import './NModal.css';
+<script lang="ts">
+import "./NModal.css";
+import {
+  defineComponent,
+  ref,
+  computed,
+  watch,
+  onMounted,
+  onBeforeUnmount,
+  defineAsyncComponent,
+} from "vue";
 
-// Lazy‑load button to avoid bundling cost
-const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
+const NButton = defineAsyncComponent(() => import("../NButton/NButton.vue"));
 
-/* --------------------------------------------------------------------------
- * Props & emits
- * -------------------------------------------------------------------------- */
-const props = defineProps({
-  /** Whether the modal is open (v‑model) */
-  modelValue: {
-    type: Boolean,
-    default: false,
+export default defineComponent({
+  name: "NModal",
+  components: {
+    NButton,
   },
-  /** Optional heading text */
-  title: {
-    type: String,
-    default: '',
+  props: {
+    /** Whether the modal is open (v-model) */
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
+    /** Optional heading text */
+    title: {
+      type: String,
+      default: "",
+    },
+    /** Label for the default trigger button */
+    buttonLabel: {
+      type: String,
+      default: "Open Modal",
+    },
   },
-  /** Label for the default trigger button */
-  buttonLabel: {
-    type: String,
-    default: 'Open Modal',
+  emits: ["update:modelValue", "open", "close"],
+  setup(props, { emit, expose }) {
+    /* reactive state -------------------------------------------------- */
+    const isOpen = ref<boolean>(props.modelValue);
+
+    /* keep internal & external state in sync -------------------------- */
+    watch(
+      () => props.modelValue,
+      (val) => {
+        isOpen.value = val;
+      },
+    );
+
+    watch(isOpen, (val) => {
+      emit("update:modelValue", val);
+      val ? emit("open") : emit("close");
+    });
+
+    /* computed -------------------------------------------------------- */
+    const modalTitle = computed(() => props.title);
+
+    /* methods --------------------------------------------------------- */
+    const openModal = () => {
+      isOpen.value = true;
+    };
+
+    const closeModal = () => {
+      isOpen.value = false;
+    };
+
+    /* UX niceties ----------------------------------------------------- */
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeModal();
+    };
+
+    onMounted(() => window.addEventListener("keydown", handleKeydown));
+    onBeforeUnmount(() => window.removeEventListener("keydown", handleKeydown));
+
+    /* expose public API ---------------------------------------------- */
+    expose({ openModal, closeModal, isOpen });
+
+    /* expose to template --------------------------------------------- */
+    return {
+      isOpen,
+      modalTitle,
+      openModal,
+      closeModal,
+    };
   },
 });
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
-  (e: 'open'): void;
-  (e: 'close'): void;
-}>();
-
-/* --------------------------------------------------------------------------
- * Reactive state
- * -------------------------------------------------------------------------- */
-const isOpen = ref(props.modelValue);
-
-// Keep internal & external state in sync
-watch(
-  () => props.modelValue,
-  (val) => {
-    isOpen.value = val;
-  },
-);
-
-watch(isOpen, (val) => {
-  emit('update:modelValue', val);
-  val ? emit('open') : emit('close');
-});
-
-/* --------------------------------------------------------------------------
- * Open / close helpers
- * -------------------------------------------------------------------------- */
-const openModal = () => {
-  isOpen.value = true;
-};
-const closeModal = () => {
-  isOpen.value = false;
-};
-
-/* --------------------------------------------------------------------------
- * UX niceties
- * -------------------------------------------------------------------------- */
-const modalTitle = computed(() => props.title);
-
-const handleKeydown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') closeModal();
-};
-
-onMounted(() => window.addEventListener('keydown', handleKeydown));
-onBeforeUnmount(() => window.removeEventListener('keydown', handleKeydown));
-
-/* --------------------------------------------------------------------------
- * Expose a tiny public API for parent refs
- * -------------------------------------------------------------------------- */
-defineExpose({ openModal, closeModal, isOpen });
 </script>
 
 <template>
   <!-- Trigger button (default or custom) -->
   <slot name="trigger" :openModal="openModal">
     <NButton
-      :label="buttonLabel"
+      :label="$props.buttonLabel"
       class="n-modal__trigger"
       @click="openModal"
     />

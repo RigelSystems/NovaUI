@@ -22,7 +22,7 @@
   
   /* === Modal container === */
   .n-modal {
-    width: 90%;
+    width: 95%;
     max-width: 32rem; /* 512px */
     overflow: hidden;
     animation: scale-in 0.2s ease;
@@ -46,6 +46,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
+    border-bottom: solid 1px #e5e7eb; /* gray-200 */
   }
   
   .n-modal__title {
@@ -72,9 +73,8 @@
   /* === Body === */
   .n-modal__body {
     padding: 1.5rem;
-    padding-top: 0;
     color: #374151; /* gray-700 */
-    max-height: 45vh;
+    max-height: 70vh;
     overflow: auto;
   }
   
@@ -100,3 +100,9 @@
     opacity: 1;
   }
   
+
+@media screen and (min-width: 768px) {
+  .n-modal__body {
+    max-height: 45vh;
+  }
+}

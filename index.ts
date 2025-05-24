@@ -20,6 +20,8 @@ import NTabs from './src/stories/NTabs/NTabs.vue';
 import NTab from './src/stories/NTab/NTab.vue';
 import NTabPanel from './src/stories/NTabPanel/NTabPanel.vue';
 import NCircleProgress from './src/stories/NCircleProgress/NCircleProgress.vue';
+import NTimeInput from './src/stories/NTimeInput/NTimeInput.vue';
+import NSelectInputFromRequest from './src/stories/NSelectInputFromRequest/NSelectInputFromRequest.vue';
 import '@mdi/font/css/materialdesignicons.css';
 import './src/assets/shared.css';
 
@@ -47,6 +49,8 @@ const NovaUI: Plugin = {
     app.component('NTab', NTab);
     app.component('NTabPanel', NTabPanel);
     app.component('NCircleProgress', NCircleProgress);
+    app.component('NTimeInput', NTimeInput);
+    app.component('NSelectInputFromRequest', NSelectInputFromRequest);
   }
 };
 

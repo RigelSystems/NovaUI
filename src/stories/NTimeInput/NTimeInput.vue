@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-import './NTextInput.css'
+import { defineComponent, computed } from 'vue';
+import "./NTimeInput.css";
 
 export default defineComponent({
-  name: 'NTextInput',
+  name: "NTimeInput",
   props: {
     label: {
       type: String,
@@ -21,21 +21,21 @@ export default defineComponent({
   emits: ['update:value'],
   setup(props, { emit }) {
     const onInput = (event: Event) => {
-      const target = event.target as HTMLInputElement
-      emit('update:value', target.value)
-    }
+      const target = event.target as HTMLInputElement;
+      emit('update:value', target.value);
+    };
 
-    return { onInput }
+    return { onInput };
   },
-})
+});
 </script>
 
 <template>
-  <div class="n-text-input n-input-wrapper">
+  <div class="n-time-input n-input-wrapper">
     <label class="n-input__label">{{ label }}</label>
     <input
       class="n-input__input"
-      type="text"
+      type="time"
       :value="value"
       :placeholder="placeholder"
       @input="onInput"

@@ -22,7 +22,30 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* colors.css */
+/* Inputs */
+
+.n-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+.n-input__label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.n-input__input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+}
 
 /* Primary Colors */
 .n-primary {
@@ -66,6 +89,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* layout classes */
+
+.standard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
 .standard-container-1 {
   flex-wrap: wrap;

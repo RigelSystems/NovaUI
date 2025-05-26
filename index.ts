@@ -9,6 +9,7 @@ import NRow from './src/stories/NRow/NRow.vue';
 import NHeroSection from './src/stories/NHeroSection/NHeroSection.vue';
 import NTextInput from './src/stories/NTextInput/NTextInput.vue';
 import NPaint from './src/stories/NPaint/NPaint.vue';
+import NPaintDisplay from './src/stories/NPaintDisplay/NPaintDisplay.vue';
 import NTimeline from './src/stories/NTimeline/NTimeline.vue';
 import NNotificationList from './src/stories/NNotificationList/NNotificationList.vue';
 import NModal from './src/stories/NModal/NModal.vue';
@@ -30,6 +31,7 @@ const NovaUI: Plugin = {
   install(app: App) {
     app.component('NButton', NButton);
     app.component('NPaint', NPaint);
+    app.component('NPaintDisplay', NPaintDisplay);
     app.component('NTextInput', NTextInput);
     app.component('NHeroSection', NHeroSection);
     app.component('NRow', NRow);

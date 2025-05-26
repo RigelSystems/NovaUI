@@ -1,52 +1,93 @@
 <script lang="ts">
-import { defineComponent, ref, watch, defineAsyncComponent } from 'vue';
+import "./NPaint.css";
+import { defineComponent, ref, watch, defineAsyncComponent } from "vue";
 
-
-const NButton = defineAsyncComponent(() => import('../NButton/NButton.vue'));
+const NButton = defineAsyncComponent(() => import("../NButton/NButton.vue"));
 
 export default defineComponent({
-  name: 'NPaint',
+  name: "NPaint",
   components: {
-    NButton
+    NButton,
   },
+  // Enable n-model / v-model:pixelData by pairing prop + update event
+  model: { prop: "pixelData", event: "update:pixelData" },
   props: {
     gridX: {
       type: Number,
-      default: 8
+      default: 8,
     },
     gridY: {
       type: Number,
-      default: 8
-    }
+      default: 8,
+    },
+    /** Existing or blank matrix of colours. */
+    pixelData: {
+      type: Array as () => string[][],
+      default: () => [],
+    },
   },
-  emits: ['save'],
-  setup(props, {emit}) {
-    const selectedColor = ref<string>('#000000');
+  emits: ["update:pixelData", "save"],
+  setup(props, { emit }) {
+    /* ------------------------------------------------ reactive state */
+    const selectedColor = ref<string>("#000000");
 
-    const createPixelData = (x: number, y: number) => 
-      Array.from({ length: y }, () => Array(x).fill('#ffffff'));
+    const createPixelData = (x: number, y: number) =>
+      Array.from({ length: y }, () => Array(x).fill("#ffffff"));
 
-    const pixelData = ref<string[][]>(createPixelData(props.gridX, props.gridY));
+    const clonePixelData = (data: string[][]) => data.map((row) => [...row]);
 
-    watch([() => props.gridX, () => props.gridY], ([newGridX, newGridY]) => {
-      pixelData.value = createPixelData(newGridX, newGridY);
-    });
+    // Initialise canvas from prop or blank
+    const pixelDataLocal = ref<string[][]>(
+      props.pixelData.length
+        ? clonePixelData(props.pixelData)
+        : createPixelData(props.gridX, props.gridY)
+    );
+
+    /* ---------------------------------------------------- watchers */
+    // Sync canvas size changes while preserving colours
+    watch(
+      [() => props.gridX, () => props.gridY],
+      ([newGridX, newGridY]) => {
+        const fresh = createPixelData(newGridX, newGridY);
+        for (let y = 0; y < Math.min(pixelDataLocal.value.length, newGridY); y++) {
+          for (let x = 0; x < Math.min(pixelDataLocal.value[0].length, newGridX); x++) {
+            fresh[y][x] = pixelDataLocal.value[y][x];
+          }
+        }
+        pixelDataLocal.value = fresh;
+        emit("update:pixelData", clonePixelData(pixelDataLocal.value));
+      }
+    );
+
+    // External prop replacement -> local clone
+    watch(
+      () => props.pixelData,
+      (newVal) => {
+        if (newVal && newVal.length) {
+          pixelDataLocal.value = clonePixelData(newVal);
+        }
+      },
+      { deep: true }
+    );
+
+    /* ----------------------------------------------------- methods */
+    const changeColor = (rowIndex: number, colIndex: number) => {
+      pixelDataLocal.value[rowIndex][colIndex] = selectedColor.value;
+      emit("update:pixelData", clonePixelData(pixelDataLocal.value));
+    };
 
     const save = () => {
-      emit('save', pixelData.value);
+      emit("save", clonePixelData(pixelDataLocal.value));
     };
 
-    const changeColor = (rowIndex: number, colIndex: number) => {
-      pixelData.value[rowIndex][colIndex] = selectedColor.value;
-    };
-
+    /* ---------------------------------------------- expose to tpl */
     return {
       selectedColor,
-      pixelData,
+      pixelDataLocal,
       changeColor,
-      save
+      save,
     };
-  }
+  },
 });
 </script>
 
@@ -59,10 +100,14 @@ export default defineComponent({
     class="pixel-canvas"
     :style="{
       '--cell-width': `${100 / $props.gridX}%`,
-      '--cell-height': `${100 / $props.gridY}%`
+      '--cell-height': `${100 / $props.gridY}%`,
     }"
   >
-    <div v-for="(row, rowIndex) in pixelData" :key="rowIndex" class="pixel-row">
+    <div
+      v-for="(row, rowIndex) in pixelDataLocal"
+      :key="rowIndex"
+      class="pixel-row"
+    >
       <div
         v-for="(color, colIndex) in row"
         :key="colIndex"
@@ -73,7 +118,11 @@ export default defineComponent({
     </div>
   </div>
 
-  <NButton label="Save" @click="save" />
+  <input
+    type="hidden"
+    name="pixelData"
+    :value="JSON.stringify(pixelDataLocal)"
+  />
 </template>
 
 <style scoped>
@@ -90,7 +139,6 @@ export default defineComponent({
 }
 
 .pixel-canvas {
-  display: inline-block;
   width: 400px;
   height: 400px;
   display: flex;
@@ -99,28 +147,22 @@ export default defineComponent({
 
 .pixel-row {
   display: flex;
-  height: var(--cell-height); /* Each row gets dynamic height */
+  height: var(--cell-height);
 }
 
 .pixel-cell {
-  width: var(--cell-width); /* Each cell gets dynamic width */
-  height: 100%; /* Make sure it fills the row */
+  width: var(--cell-width);
+  height: 100%;
   border: 1px solid #ccc;
   cursor: pointer;
-}
-
-.pixel-icon .pixel-cell {
-  width: 3px;
-  height: 3px;
-  border: none;
-  box-sizing: border-box; /* Prevents extra size from borders */
+  box-sizing: border-box;
 }
 
 .pixel-cell:not(:last-child) {
-  border-right: none; /* Removes duplicate borders between cells */
+  border-right: none;
 }
 
 .pixel-row:not(:last-child) .pixel-cell {
-  border-bottom: none; /* Removes duplicate horizontal borders */
+  border-bottom: none;
 }
 </style>

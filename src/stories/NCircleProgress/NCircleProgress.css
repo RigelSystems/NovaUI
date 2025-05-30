@@ -1,6 +1,7 @@
 .n-circle-progress {
     display: inline-block;
     user-select: none;
+    overflow: visible;
   }
   
   /* Track ring */

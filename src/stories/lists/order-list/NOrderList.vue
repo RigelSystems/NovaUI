@@ -63,9 +63,6 @@ export default defineComponent({
       emptyImage.style.opacity = "0";
       document.body.appendChild(emptyImage);
 
-      // Set it as the drag image
-      event.dataTransfer?.setDragImage(emptyImage, 0, 0);
-
       // Cleanup: Remove the element after drag starts
       setTimeout(() => document.body.removeChild(emptyImage), 0);
     };

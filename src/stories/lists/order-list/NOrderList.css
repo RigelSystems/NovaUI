@@ -17,14 +17,14 @@
 }
 
 .n-order-list__dragging {
-  background-color: #f5f5f5;
+  border: dashed 2px orange;
 }
 
 /* Loading State */
-.n-order-list__disabled {
+/* .n-order-list__disabled {
   pointer-events: none;
   opacity: 0.5;
-}
+} */
 
 .n-order-list__loading-overlay {
   position: absolute;

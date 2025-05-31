@@ -1,0 +1,20 @@
+.n-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.n-select .n-input__input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: white;
+}
+
+.n-select .n-input__input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

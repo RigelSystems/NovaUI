@@ -1,0 +1,3 @@
+# Package useage
+
+This library has been created to work with my vue and rails api projects, the component will likely be making requests to a backend and will require an access_token prop if so, things like updating records or fetching records will require this information, we'll also like to provide nice information to the user like errors and loading messages. We'll be using jsonapi.rb gem and hario when creating our apis.

@@ -1,0 +1,11 @@
+import{d as f,b as o,m as l,t as r,F as _,p as S,o as s}from"./vue.esm-bundler-C_Ws3nPw.js";import{_ as b}from"./_plugin-vue_export-helper-DlAUqK2U.js";const m=f({name:"NSelect",props:{label:{type:String,required:!0},value:{type:String,default:""},options:{type:Array,required:!0},placeholder:{type:String,default:"Select an option"}},emits:["update:value"],setup(e,{emit:n}){return{onInput:p=>{const u=p.target;n("update:value",u.value)}}}}),y={class:"n-select n-input-wrapper"},N={class:"n-input__label"},h=["value"],I={value:"",disabled:""},k=["value"];function q(e,n,g,p,u,$){return s(),o("div",y,[l("label",N,r(e.label),1),l("select",{class:"n-input__input",value:e.value,onInput:n[0]||(n[0]=(...t)=>e.onInput&&e.onInput(...t))},[l("option",I,r(e.placeholder),1),(s(!0),o(_,null,S(e.options,t=>(s(),o("option",{key:t.value,value:t.value},r(t.label),9,k))),128))],40,h)])}const v=b(m,[["render",q]]);m.__docgenInfo={displayName:"NSelect",exportName:"default",description:"",tags:{},props:[{name:"label",type:{name:"string"},required:!0},{name:"value",type:{name:"string"},defaultValue:{func:!1,value:"''"}},{name:"options",type:{name:"Array as () => Array<{ value: string; label: string }>"},required:!0},{name:"placeholder",type:{name:"string"},defaultValue:{func:!1,value:"'Select an option'"}}],events:[{name:"update:value"}],sourceFiles:["/home/runner/work/NovaUI/NovaUI/src/stories/NSelect/NSelect.vue"]};const C={title:"Components/NSelect",component:v,argTypes:{label:{control:"text"},value:{control:"text"},options:{control:"array"},placeholder:{control:"text"}}},O=e=>({components:{NSelect:v},setup(){return{args:e}},template:'<NSelect v-bind="args" />'}),a=O.bind({});a.args={label:"Select an option",value:"",options:[{value:"1",label:"Option 1"},{value:"2",label:"Option 2"},{value:"3",label:"Option 3"}],placeholder:"Choose an option"};var i,c,d;a.parameters={...a.parameters,docs:{...(i=a.parameters)==null?void 0:i.docs,source:{originalSource:`args => ({
+  components: {
+    NSelect
+  },
+  setup() {
+    return {
+      args
+    };
+  },
+  template: '<NSelect v-bind="args" />'
+})`,...(d=(c=a.parameters)==null?void 0:c.docs)==null?void 0:d.source}}};const D=["Default"];export{a as Default,D as __namedExportsOrder,C as default};

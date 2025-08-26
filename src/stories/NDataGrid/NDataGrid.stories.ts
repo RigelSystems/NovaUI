@@ -14,7 +14,7 @@ type Story = StoryObj<typeof NDataGrid>;
 export const Default: Story = {
   args: {
     url: '/mock/data',
-    method: 'get',
+    method: 'GET',
     params: {},
   },
 };
@@ -32,7 +32,7 @@ const MockData = {
 export const MockedSuccess: Story = {
   args: {
     url: '/mock/data',
-    method: 'get',
+    method: 'GET',
     params: {},
   },
   parameters: {
@@ -50,7 +50,7 @@ export const MockedSuccess: Story = {
 export const MockedError: Story = {
   args: {
     url: '/mock/data',
-    method: 'get',
+    method: 'GET',
     params: {},
   },
   parameters: {

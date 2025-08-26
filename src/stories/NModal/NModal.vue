@@ -112,7 +112,7 @@ export default defineComponent({
             <h2 v-if="modalTitle" class="n-modal__title">{{ modalTitle }}</h2>
             <NButton
               class="n-modal__close-button"
-              icon="x"
+              label="Close"
               @click="closeModal"
             />
           </slot>

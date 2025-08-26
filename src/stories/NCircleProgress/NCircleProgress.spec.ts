@@ -1,16 +1,15 @@
-import { render, fireEvent } from '@testing-library/vue';
+import { render } from '@testing-library/vue';
 import { describe, expect, it } from 'vitest';
 import NCircleProgress from "./NCircleProgress.vue";
 
 describe("NCircleProgress", () => {
-    it('renders with label', () => {
-        const { getByText } = render(NCircleProgress, { props: { label: 'Click me' } });
-        expect(getByText('Click me')).toBeTruthy();
+    it('renders with progress', () => {
+        const { container } = render(NCircleProgress, { props: { current: 5, total: 10 } });
+        expect(container.querySelector('.circle-progress')).toBeTruthy();
     });
 
-    it('emits click event', async () => {
-        const { getByRole, emitted } = render(NCircleProgress, { props: { label: 'Click' } });
-        await fireEvent.click(getByRole('button'));
-        expect(emitted()).toHaveProperty('click');
+    it('displays correct percentage', () => {
+        const { getByText } = render(NCircleProgress, { props: { current: 3, total: 10 } });
+        expect(getByText('30%')).toBeTruthy();
     });
 });

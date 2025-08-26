@@ -54,16 +54,16 @@
   <div class="preview">
     <NNavigationBar :links="links"/>
 
-    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]" />
+    <NHeroSection title="Hero Section Title" subtitle="Hero Section Subtitle" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home', onClick: () => {}}]" />
 
     <NScrollArrow />
 
-    <NHeroSection layout="left" title="Hero Section Title" subtitle="A testing banana" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]">
+    <NHeroSection layout="left" title="Hero Section Title" subtitle="A testing banana" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home', onClick: () => {}}]">
       <template #image>
         <img src="./banana.avif" alt="Placeholder Image" class="n-hero-image"/>
       </template>
     </NHeroSection>
-    <NHeroSection layout="right" title="Hero Section Title" subtitle="A testing apple" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home'}]">
+    <NHeroSection layout="right" title="Hero Section Title" subtitle="A testing apple" content="Some example text for this hero section" :actionButtons="[{label: 'Action Button', href: '/home', onClick: () => {}}]">
       <template #image>
         <img src="./apple.avif" alt="Placeholder Image" class="n-hero-image" />
       </template>

@@ -11,17 +11,14 @@ const meta: Meta<typeof NModal> = {
       control: { type: "text" },
       description: "Title text displayed in the modal header",
     },
-    triggerLabel: {
+    buttonLabel: {
       control: { type: "text" },
-      description: "Label for the button that triggers the modal (trigger slot)",
-      table: {
-        category: "Slots",
-      },
+      description: "Label for the button that triggers the modal",
     },
   },
   args: {
     title: "Modal Title",
-    triggerLabel: "Open Modal",
+    buttonLabel: "Open Modal",
   },
   parameters: {
     docs: {
@@ -43,7 +40,7 @@ export const Default: StoryFn<typeof NModal> = (args) => ({
   template: `
     <!-- Using trigger slot to customize the button text -->
     <NModal v-bind="args">
-      <template #trigger>{{ args.triggerLabel }}</template>
+      <template #trigger>{{ args.buttonLabel }}</template>
 
       <!-- Default slot (body) -->
       <p>This is some example body content inside the default slot. You can use any markup here.</p>

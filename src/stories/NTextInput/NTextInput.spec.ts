@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/vue';
+import { render } from '@testing-library/vue';
 import { describe, expect, it } from 'vitest';
 import NTextInput from "./NTextInput.vue";
 
@@ -8,9 +8,8 @@ describe("NTextInput", () => {
         expect(getByText('Click me')).toBeTruthy();
     });
 
-    it('emits click event', async () => {
-        const { getByRole, emitted } = render(NTextInput, { props: { label: 'Click' } });
-        await fireEvent.click(getByRole('button'));
-        expect(emitted()).toHaveProperty('click');
+    it('renders text input field', () => {
+        const { getByRole } = render(NTextInput, { props: { label: 'Input' } });
+        expect(getByRole('textbox')).toBeTruthy();
     });
 });

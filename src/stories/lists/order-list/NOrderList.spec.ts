@@ -1,6 +1,6 @@
-// import { render, fireEvent, waitFor } from '@testing-library/vue';
-// import { describe, it, expect, vi } from 'vitest';
-// import NList from './NOrderList.vue';
+import { render } from '@testing-library/vue';
+import { describe, it, expect } from 'vitest';
+import NOrderList from './NOrderList.vue';
 
 // global.fetch = vi.fn(() =>
 //   Promise.resolve({
@@ -53,3 +53,16 @@
 //     }));
 //   });
 // });
+
+describe('NOrderList', () => {
+    it('renders without crashing', () => {
+        const { container } = render(NOrderList, {
+            props: {
+                updateUrl: 'https://example.com/api/reorder',
+                items: [],
+                modelName: 'test'
+            }
+        });
+        expect(container).toBeTruthy();
+    });
+});

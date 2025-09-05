@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/vue';
+import { render } from '@testing-library/vue';
 import { describe, expect, it } from 'vitest';
 import NPill from "./NPill.vue";
 
@@ -8,9 +8,25 @@ describe("NPill", () => {
         expect(getByText('Click me')).toBeTruthy();
     });
 
-    it('emits click event', async () => {
-        const { getByRole, emitted } = render(NPill, { props: { label: 'Click' } });
-        await fireEvent.click(getByRole('button'));
-        expect(emitted()).toHaveProperty('click');
+    it('renders as a span element', () => {
+        const { container } = render(NPill, { props: { label: 'Test' } });
+        expect(container.querySelector('span.n-pill')).toBeTruthy();
+    });
+
+    it('applies correct color class', () => {
+        const { container } = render(NPill, { 
+            props: { 
+                label: 'Test',
+                color: 'primary'
+            } 
+        });
+        const pill = container.querySelector('.n-pill');
+        expect(pill?.classList.contains('n-primary')).toBe(true);
+    });
+
+    it('applies default color class when no color specified', () => {
+        const { container } = render(NPill, { props: { label: 'Test' } });
+        const pill = container.querySelector('.n-pill');
+        expect(pill?.classList.contains('n-default')).toBe(true);
     });
 });

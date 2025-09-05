@@ -4,13 +4,28 @@ import NColourPicker from "./NColourPicker.vue";
 
 describe("NColourPicker", () => {
     it('renders with label', () => {
-        const { getByText } = render(NColourPicker, { props: { label: 'Click me' } });
-        expect(getByText('Click me')).toBeTruthy();
+        const { getByText } = render(NColourPicker, { props: { label: 'Select Color' } });
+        expect(getByText('Select Color')).toBeTruthy();
     });
 
-    it('emits click event', async () => {
-        const { getByRole, emitted } = render(NColourPicker, { props: { label: 'Click' } });
-        await fireEvent.click(getByRole('button'));
-        expect(emitted()).toHaveProperty('click');
+    it('renders color picker swatches', () => {
+        const { container } = render(NColourPicker, { props: { label: 'Color' } });
+        const swatches = container.querySelectorAll('.n-color-picker__swatch');
+        expect(swatches.length).toBeGreaterThan(0);
+    });
+
+    it('emits update:value when color swatch is clicked', async () => {
+        const { container, emitted } = render(NColourPicker, { props: { label: 'Color' } });
+        const firstSwatch = container.querySelector('.n-color-picker__swatch');
+        
+        if (firstSwatch) {
+            await fireEvent.click(firstSwatch);
+            expect(emitted()).toHaveProperty('update:modelValue');
+        }
+    });
+
+    it('renders native color input', () => {
+        const { container } = render(NColourPicker, { props: { label: 'Color' } });
+        expect(container.querySelector('input[type="color"]')).toBeTruthy();
     });
 });

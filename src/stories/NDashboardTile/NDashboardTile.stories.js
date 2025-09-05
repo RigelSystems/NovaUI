@@ -2,7 +2,7 @@ import NDashboardTile from "./NDashboardTile.vue";
 import { fn } from '@storybook/test';
 
 export default {
-  title: "NDashboardTile",
+  title: "Layout/NDashboardTile",
   component: NDashboardTile,
   tags: ['autodocs'],
   argTypes: {

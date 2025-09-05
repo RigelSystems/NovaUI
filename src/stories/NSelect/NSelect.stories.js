@@ -1,7 +1,7 @@
 import NSelect from './NSelect.vue'
 
 export default {
-  title: 'Components/NSelect',
+  title: 'Inputs/NSelect',
   component: NSelect,
   argTypes: {
     label: { control: 'text' },

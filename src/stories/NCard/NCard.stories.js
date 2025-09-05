@@ -4,7 +4,7 @@ import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Components/NCard",
+  title: "Layout/NCard",
   component: NCard,
   tags: ['autodocs'],
   argTypes: {

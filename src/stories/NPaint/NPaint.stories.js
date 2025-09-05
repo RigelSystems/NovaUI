@@ -2,7 +2,7 @@ import NPaint from "./NPaint.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "NPaint",
+  title: "Data Display/NPaint",
   component: NPaint,
   tags: ['autodocs'],
   argTypes: {

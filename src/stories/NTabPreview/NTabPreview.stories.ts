@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<typeof NTabPreview> = {
   component: NTabPreview,
-  title: 'Layout/Tabs/NTabPreview',
+  title: 'Navigation/NTabPreview',
 };
 
 export default meta;

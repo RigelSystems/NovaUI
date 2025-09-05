@@ -4,7 +4,7 @@ import NNotificationList from './NNotificationList.vue';
 
 const meta: Meta<typeof NNotificationList> = {
   component: NNotificationList,
-  title: 'Social/Notifications/NNotificationList',
+  title: 'Feedback/NNotificationList',
 };
 
 export default meta;

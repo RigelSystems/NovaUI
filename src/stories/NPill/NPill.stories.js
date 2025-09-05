@@ -3,7 +3,7 @@ import NPill from "./NPill.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Components/NPill",
+  title: "Feedback/NPill",
   component: NPill,
   tags: ['autodocs'],
   argTypes: {

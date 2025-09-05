@@ -2,7 +2,7 @@ import Preview from "./Preview.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Previews/Basic",
+  title: "Examples/Preview",
   component: Preview,
   tags: ['autodocs'],
   argTypes: {

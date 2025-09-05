@@ -3,7 +3,7 @@ import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "NScrollArrow",
+  title: "Utilities/NScrollArrow",
   component: NScrollArrow,
   tags: ['autodocs'],
   argTypes: {

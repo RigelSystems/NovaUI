@@ -1,7 +1,7 @@
 import NDropdown from "./NDropdown.vue";
 
 export default {
-  title: "Components/NDropdown",
+  title: "Inputs/NDropdown",
   component: NDropdown,
   tags: ["autodocs"],
   argTypes: {

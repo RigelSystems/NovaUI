@@ -4,7 +4,7 @@ import NDataGrid from './NDataGrid.vue';
 
 const meta: Meta<typeof NDataGrid> = {
   component: NDataGrid,
-  title: 'Data/NDataGrid',
+  title: 'Data Display/NDataGrid',
 };
 
 export default meta;

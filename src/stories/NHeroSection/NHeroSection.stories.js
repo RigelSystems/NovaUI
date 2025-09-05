@@ -2,7 +2,7 @@ import NHeroSection from "./NHeroSection.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Section/NHeroSection",
+  title: "Layout/NHeroSection",
   component: NHeroSection,
   tags: ['autodocs'],
   argTypes: {

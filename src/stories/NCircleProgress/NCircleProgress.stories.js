@@ -2,7 +2,7 @@ import NCircleProgress from "./NCircleProgress.vue";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "NCircleProgress",
+  title: "Data Display/NCircleProgress",
   component: NCircleProgress,
   tags: ['autodocs'],
   argTypes: {

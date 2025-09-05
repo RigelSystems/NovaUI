@@ -3,7 +3,7 @@ import { fn } from '@storybook/test'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: "Layout/Tabs/NTabs",
+  title: "Navigation/NTabs",
   component: NTabs,
   tags: ['autodocs'],
   argTypes: {

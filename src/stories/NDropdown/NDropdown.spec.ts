@@ -8,9 +8,55 @@ describe("NDropdown", () => {
         expect(getByText('Click me')).toBeTruthy();
     });
 
-    it('emits click event', async () => {
-        const { getByRole, emitted } = render(NDropdown, { props: { label: 'Click' } });
-        await fireEvent.click(getByRole('button'));
-        expect(emitted()).toHaveProperty('click');
+    it('renders with content', () => {
+        const { getByText } = render(NDropdown, { 
+            props: { 
+                label: 'Dropdown', 
+                content: 'Hidden content' 
+            } 
+        });
+        expect(getByText('Dropdown')).toBeTruthy();
+        expect(getByText('Hidden content')).toBeTruthy();
+    });
+
+    it('toggles dropdown when header is clicked', async () => {
+        const { container } = render(NDropdown, { 
+            props: { 
+                label: 'Toggle me', 
+                content: 'Content' 
+            } 
+        });
+        
+        const header = container.querySelector('.n-dropdown__header');
+        const content = container.querySelector('.n-dropdown__content');
+        
+        expect(header).toBeTruthy();
+        expect(content).toBeTruthy();
+        
+        // Initially closed
+        expect(content?.classList.contains('n-dropdown__content--open')).toBe(false);
+        
+        // Click to open
+        await fireEvent.click(header!);
+        expect(content?.classList.contains('n-dropdown__content--open')).toBe(true);
+        
+        // Click to close
+        await fireEvent.click(header!);
+        expect(content?.classList.contains('n-dropdown__content--open')).toBe(false);
+    });
+
+    it('shows chevron by default', () => {
+        const { container } = render(NDropdown, { props: { label: 'Test' } });
+        expect(container.querySelector('.n-dropdown__caret')).toBeTruthy();
+    });
+
+    it('hides chevron when chevron prop is false', () => {
+        const { container } = render(NDropdown, { 
+            props: { 
+                label: 'Test', 
+                chevron: false 
+            } 
+        });
+        expect(container.querySelector('.n-dropdown__caret')).toBeFalsy();
     });
 });

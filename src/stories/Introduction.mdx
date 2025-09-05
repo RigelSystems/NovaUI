@@ -1,0 +1,241 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # NovaUI
+    ### A Vue 3 Component Library by Rigel Systems
+
+    NovaUI is a comprehensive collection of reusable Vue 3 components designed to accelerate your development workflow. Built with modern web standards and best practices, NovaUI provides everything you need to create beautiful, consistent user interfaces.
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🚀 Quick Start</h4>
+      <p className="sb-section-item-paragraph">Install NovaUI in your Vue 3 project and start building immediately.</p>
+      <pre className="sb-code-block">
+        {`npm install @rigelsystems/novaui`}
+      </pre>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">⚡ Vue 3 Optimized</h4>
+      <p className="sb-section-item-paragraph">Built specifically for Vue 3 with TypeScript support and modern composition patterns.</p>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🎨 Customizable</h4>
+      <p className="sb-section-item-paragraph">Flexible theming system with support for custom colors and border radius.</p>
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## Getting Started
+
+    Follow these simple steps to add NovaUI to your project:
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">1. Installation</h4>
+      <p className="sb-section-item-paragraph">Install the package via npm:</p>
+      <pre className="sb-code-block">
+        {`npm install @rigelsystems/novaui`}
+      </pre>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">2. Import & Register</h4>
+      <p className="sb-section-item-paragraph">Register NovaUI in your main.js:</p>
+      <pre className="sb-code-block">
+        {`import { createApp } from 'vue'
+import NovaUI from '@rigelsystems/novaui'
+import '@rigelsystems/novaui/dist/style.css'
+
+const app = createApp(App)
+app.use(NovaUI)
+app.mount('#app')`}
+      </pre>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">3. Start Using</h4>
+      <p className="sb-section-item-paragraph">Use components in your templates:</p>
+      <pre className="sb-code-block">
+        {`<template>
+  <n-card title="Welcome">
+    <n-button primary>Get Started</n-button>
+  </n-card>
+</template>`}
+      </pre>
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## Component Categories
+
+    NovaUI components are organized into logical categories to help you find what you need:
+  </div>
+
+  <div className="sb-features-grid">
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">🔧 Inputs</h4>
+      <p className="sb-section-item-paragraph">Interactive form elements like buttons, text inputs, selectors, and color pickers for user interaction.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">📐 Layout</h4>
+      <p className="sb-section-item-paragraph">Structural components like cards, modals, hero sections, and dashboard tiles for organizing content.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">📊 Data Display</h4>
+      <p className="sb-section-item-paragraph">Components for presenting information like data grids, timelines, progress indicators, and visual displays.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">🧭 Navigation</h4>
+      <p className="sb-section-item-paragraph">Navigation elements including navigation bars, tabs, and tab panels for moving between content.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">💬 Feedback</h4>
+      <p className="sb-section-item-paragraph">User feedback components like notifications, pills, and status indicators.</p>
+    </div>
+    <div className="sb-grid-item">
+      <h4 className="sb-section-item-heading">🔧 Utilities</h4>
+      <p className="sb-section-item-paragraph">Helper components like scroll arrows and other utility elements.</p>
+    </div>
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## Features
+
+    What makes NovaUI special:
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🎯 50+ Components</h4>
+      <p className="sb-section-item-paragraph">Comprehensive collection covering all common UI patterns and use cases.</p>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">📱 Responsive Design</h4>
+      <p className="sb-section-item-paragraph">All components work beautifully across desktop, tablet, and mobile devices.</p>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🎨 Theming Support</h4>
+      <p className="sb-section-item-paragraph">Customize colors and styling to match your brand identity.</p>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">✅ Well Tested</h4>
+      <p className="sb-section-item-paragraph">Every component is thoroughly tested with Vitest and Testing Library.</p>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">📚 TypeScript Ready</h4>
+      <p className="sb-section-item-paragraph">Full TypeScript support with proper type definitions.</p>
+    </div>
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🔄 Regular Updates</h4>
+      <p className="sb-section-item-paragraph">Continuously maintained and improved with new components and features.</p>
+    </div>
+  </div>
+</div>
+
+<div className='sb-addon'>
+  <div className='sb-addon-text'>
+    <h4>Ready to Build?</h4>
+    <p className="sb-section-item-paragraph">Explore our component library and start building amazing user interfaces with NovaUI.</p>
+  </div>
+</div>
+
+<style>
+  {`
+  .sb-container {
+    margin-bottom: 48px;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section-item, .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 20px !important;
+    padding-bottom: 5px !important;
+    margin: 0 !important;
+  }
+
+  .sb-section-item-paragraph {
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 32px 20px;
+  }
+
+  .sb-code-block {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 16px;
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 8px 0;
+    overflow-x: auto;
+  }
+
+  .sb-addon {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    color: white;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+
+  .sb-addon-text h4 {
+    color: white;
+    margin-top: 0;
+  }
+
+  .sb-addon-text p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sb-addon {
+      padding: 24px;
+    }
+  }
+  `}
+</style>

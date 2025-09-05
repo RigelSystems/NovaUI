@@ -1,6 +1,6 @@
 <script lang="ts">
   import { defineComponent, computed, ref, onMounted, onUnmounted } from 'vue';
-  import dayjs from 'dayjs';
+  import dayjs from 'dayjs/esm/index.js';
 
   import "./NTimeline.css";
 

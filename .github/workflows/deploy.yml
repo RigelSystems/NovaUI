@@ -21,6 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run Type Check
+        run: npm run type-check
+
+      - name: Run Tests
+        run: npx vitest run
+
       - name: Build project
         run: yarn build-storybook
 

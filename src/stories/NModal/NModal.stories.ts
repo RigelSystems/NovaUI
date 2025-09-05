@@ -38,10 +38,8 @@ export const Default: StoryFn<typeof NModal> = (args) => ({
     return { args };
   },
   template: `
-    <!-- Using trigger slot to customize the button text -->
+    <!-- Using the default trigger button -->
     <NModal v-bind="args">
-      <template #trigger>{{ args.buttonLabel }}</template>
-
       <!-- Default slot (body) -->
       <p>This is some example body content inside the default slot. You can use any markup here.</p>
 
@@ -49,6 +47,24 @@ export const Default: StoryFn<typeof NModal> = (args) => ({
       <template #footer>
         <button class="n-modal__trigger" @click="alert('Save clicked!')">Save</button>
       </template>
+    </NModal>
+  `,
+});
+
+export const CustomTrigger: StoryFn<typeof NModal> = (args) => ({
+  components: { NModal },
+  setup() {
+    return { args };
+  },
+  template: `
+    <!-- Using custom trigger slot -->
+    <NModal v-bind="args">
+      <template #trigger="{ openModal }">
+        <button @click="openModal" class="custom-trigger-button">{{ args.buttonLabel }}</button>
+      </template>
+
+      <!-- Default slot (body) -->
+      <p>This modal uses a custom trigger button.</p>
     </NModal>
   `,
 });

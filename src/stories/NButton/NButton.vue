@@ -29,6 +29,10 @@ export default defineComponent({
       type: String,
       default: '',
     },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ['click'],
   setup(props, { emit }) {
@@ -71,6 +75,7 @@ export default defineComponent({
     :class="classes"
     @click="onClick"
     :style="styles"
+    :disabled="disabled"
   >
     {{ label }}
     <slot></slot>

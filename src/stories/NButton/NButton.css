@@ -1,35 +1,62 @@
 .n-button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: var(--theme-color, #007bff);
-  border: none;
-  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 8px;
   cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.n-button:hover:not(:disabled) {
+  filter: brightness(0.93);
+}
+
+.n-button:disabled {
+  opacity: 0.55;
+  cursor: default;
 }
 
 a.n-button {
   text-decoration: none;
 }
 
+/* Primary (filled) */
+.n-button--primary {
+  background-color: var(--theme-color, #88bdb9);
+  border-color: var(--theme-color, #88bdb9);
+  color: #fff;
+}
+
+/* Secondary (outlined) */
+.n-button--secondary {
+  background-color: #ffffff;
+  border-color: var(--theme-color, #88bdb9);
+  color: var(--theme-color, #88bdb9);
+}
+
+/* Sizes */
 .n-button--tiny {
-  padding: 2px 5px;
-  font-size: 10px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
 }
 
 .n-button--small {
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
 }
 
 .n-button--medium {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
 }
 
 .n-button--large {
-  padding: 15px 30px;
-  font-size: 18px;
+  padding: 0.65rem 1.2rem;
+  font-size: 1rem;
 }
 

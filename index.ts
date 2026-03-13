@@ -25,6 +25,7 @@ import NTimeInput from './src/stories/NTimeInput/NTimeInput.vue';
 import NSelectInputFromRequest from './src/stories/NSelectInputFromRequest/NSelectInputFromRequest.vue';
 import NSelect from './src/stories/NSelect/NSelect.vue';
 import NPill from './src/stories/NPill/NPill.vue';
+import NAccountPage from './src/stories/NAccountPage/NAccountPage.vue';
 import '@mdi/font/css/materialdesignicons.css';
 import './src/assets/shared.css';
 
@@ -57,6 +58,7 @@ const NovaUI: Plugin = {
     app.component('NSelectInputFromRequest', NSelectInputFromRequest);
     app.component('NSelect', NSelect);
     app.component('NPill', NPill);
+    app.component('NAccountPage', NAccountPage);
   }
 };
 

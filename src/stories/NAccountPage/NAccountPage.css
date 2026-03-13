@@ -1,0 +1,164 @@
+.n-account-page {
+  padding: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Profile header ──────────────────────────────────────── */
+
+.n-account-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+  border: 1px solid #f3f4f6;
+}
+
+.n-account-header__avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--theme-color, #88bdb9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.n-account-header__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.n-account-header__avatar-initials {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.n-account-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.n-account-header__name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.n-account-header__name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.n-account-header__email {
+  font-size: 0.83rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.n-account-header__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.n-account-header__badge--premium {
+  background: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #fde68a;
+}
+
+.n-account-header__badge--free {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Body: tabs + content ────────────────────────────────── */
+
+.n-account-body {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.04);
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+}
+
+.n-account-tabs {
+  display: flex;
+  border-bottom: 1px solid #f3f4f6;
+  padding: 0 1.25rem;
+}
+
+.n-account-tab {
+  padding: 0.85rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+
+.n-account-tab:hover {
+  color: #374151;
+}
+
+.n-account-tab--active {
+  color: var(--theme-color, #88bdb9);
+  border-bottom-color: var(--theme-color, #88bdb9);
+}
+
+.n-account-content {
+  padding: 1.5rem 1.75rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 540px) {
+  .n-account-page {
+    padding: 1rem;
+  }
+
+  .n-account-header {
+    padding: 1.1rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .n-account-header__avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .n-account-content {
+    padding: 1.1rem 1.25rem;
+  }
+}

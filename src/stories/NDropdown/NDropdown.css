@@ -25,7 +25,7 @@
 }
 
 .n-dropdown__content--open {
-    max-height: 500px;
+    max-height: 9999px;
     opacity: 1;
 }
 
